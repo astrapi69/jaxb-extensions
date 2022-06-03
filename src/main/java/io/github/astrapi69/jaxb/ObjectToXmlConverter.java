@@ -22,8 +22,36 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69;
+package io.github.astrapi69.jaxb;
 
-public class InitialTemplate
+import io.github.astrapi69.io.StringOutputStream;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import io.github.astrapi69.xml.api.ObjectToXml;
+import lombok.NonNull;
+
+import javax.xml.bind.Marshaller;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * The class {@link ObjectToXmlConverter} provides a single method for convert an object to a xml string
+ */
+public class ObjectToXmlConverter implements ObjectToXml
 {
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override public <T> String toXml(final @NonNull T object)
+	{
+		Class<T> tClass = (Class<T>)object.getClass();
+		Map<String, Object> marshallerProperties = new HashMap<>();
+		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		Marshaller marshaller = RuntimeExceptionDecorator.decorate(
+			() -> MarshallerFactory.getMarshaller(null, tClass, marshallerProperties));
+		StringOutputStream outputStream = new StringOutputStream();
+		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, outputStream));
+		String xmlString = outputStream.toString();
+		return xmlString;
+	}
 }
