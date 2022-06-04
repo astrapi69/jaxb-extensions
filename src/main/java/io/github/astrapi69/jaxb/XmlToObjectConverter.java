@@ -24,8 +24,8 @@
  */
 package io.github.astrapi69.jaxb;
 
-import lombok.NonNull;
 import io.github.astrapi69.xml.api.XmlToObject;
+import lombok.NonNull;
 
 /**
  * The class {@link XmlToObjectConverter} can convert a given xml string to an object
