@@ -24,20 +24,17 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.io.StringOutputStream;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
-import io.github.astrapi69.xml.api.ObjectToXml;
-import lombok.NonNull;
+import java.io.File;
 
-import javax.xml.bind.Marshaller;
-import java.util.HashMap;
-import java.util.Map;
+import lombok.NonNull;
+import io.github.astrapi69.xml.api.ObjectToXml;
+import io.github.astrapi69.xml.api.ObjectToXmlFile;
 
 /**
  * The class {@link ObjectToXmlConverter} provides a single method for convert an object to a xml
  * string
  */
-public class ObjectToXmlConverter implements ObjectToXml
+public class ObjectToXmlConverter implements ObjectToXml, ObjectToXmlFile
 {
 
 	/**
@@ -46,14 +43,20 @@ public class ObjectToXmlConverter implements ObjectToXml
 	@Override
 	public <T> String toXml(final @NonNull T object)
 	{
-		Class<T> tClass = (Class<T>)object.getClass();
-		Map<String, Object> marshallerProperties = new HashMap<>();
-		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		Marshaller marshaller = RuntimeExceptionDecorator
-			.decorate(() -> MarshallerFactory.getMarshaller(null, tClass, marshallerProperties));
-		StringOutputStream outputStream = new StringOutputStream();
-		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, outputStream));
-		String xmlString = outputStream.toString();
-		return xmlString;
+		return ObjectToXmlExtensions.toXml(object);
+	}
+
+	/**
+	 * Converts the given object to a xml string
+	 *
+	 * @param <T>
+	 *            the generic type of the return type
+	 * @param object
+	 *            the object to convert to xml
+	 * @return the xml string from the given object
+	 */
+	public <T> void toXml(final @NonNull T object, final @NonNull File file)
+	{
+		ObjectToXmlExtensions.toXml(object, file);
 	}
 }

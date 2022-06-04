@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:company xmlns:ns2="io.github.astrapi69.jaxb">
+    <employeeList>
+        <employee>
+            <id>1</id>
+            <gender>woman</gender>
+            <name>Lea</name>
+            <married>false</married>
+        </employee>
+        <employee>
+            <id>2</id>
+            <gender>man</gender>
+            <name>Luke</name>
+            <married>false</married>
+        </employee>
+    </employeeList>
+    <location>Greece/Katerini</location>
+    <name>StarPiece</name>
+</ns2:company>

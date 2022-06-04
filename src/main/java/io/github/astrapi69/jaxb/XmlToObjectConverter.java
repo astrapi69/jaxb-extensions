@@ -24,12 +24,8 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
-import io.github.astrapi69.xml.api.XmlToObject;
 import lombok.NonNull;
-
-import javax.xml.bind.Unmarshaller;
-import java.io.StringReader;
+import io.github.astrapi69.xml.api.XmlToObject;
 
 /**
  * The class {@link XmlToObjectConverter} can convert a given xml string to an object
@@ -43,10 +39,6 @@ public class XmlToObjectConverter implements XmlToObject
 	@Override
 	public <T> T toObject(final @NonNull String xmlString, final @NonNull Class<T> clazz)
 	{
-		Unmarshaller unmarshaller = RuntimeExceptionDecorator
-			.decorate(() -> UnmarshallerFactory.getUnmarshaller(clazz));
-		T object = (T)RuntimeExceptionDecorator
-			.decorate(() -> unmarshaller.unmarshal(new StringReader(xmlString)));
 		return XmlToObjectExtensions.toObject(xmlString, clazz);
 	}
 }
