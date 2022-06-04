@@ -34,7 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The class {@link ObjectToXmlConverter} provides a single method for convert an object to a xml string
+ * The class {@link ObjectToXmlConverter} provides a single method for convert an object to a xml
+ * string
  */
 public class ObjectToXmlConverter implements ObjectToXml
 {
@@ -42,13 +43,14 @@ public class ObjectToXmlConverter implements ObjectToXml
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override public <T> String toXml(final @NonNull T object)
+	@Override
+	public <T> String toXml(final @NonNull T object)
 	{
 		Class<T> tClass = (Class<T>)object.getClass();
 		Map<String, Object> marshallerProperties = new HashMap<>();
 		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		Marshaller marshaller = RuntimeExceptionDecorator.decorate(
-			() -> MarshallerFactory.getMarshaller(null, tClass, marshallerProperties));
+		Marshaller marshaller = RuntimeExceptionDecorator
+			.decorate(() -> MarshallerFactory.getMarshaller(null, tClass, marshallerProperties));
 		StringOutputStream outputStream = new StringOutputStream();
 		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, outputStream));
 		String xmlString = outputStream.toString();

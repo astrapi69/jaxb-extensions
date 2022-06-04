@@ -42,18 +42,23 @@ public class MarshallerFactory
 		return getMarshaller(context, aClass, null);
 	}
 
-	public static Marshaller getMarshaller(JAXBContext context, Class aClass, Map<String, Object> marshallerProperties) throws JAXBException
+	public static Marshaller getMarshaller(JAXBContext context, Class aClass,
+		Map<String, Object> marshallerProperties) throws JAXBException
 	{
 		JAXBContext newContext;
 		if (context != null)
 		{
 			newContext = context;
-		} else {
+		}
+		else
+		{
 			newContext = JAXBContext.newInstance(aClass);
 		}
 		Marshaller marshaller = newContext.createMarshaller();
-		if(marshallerProperties != null && !marshallerProperties.isEmpty()) {
-			for(Map.Entry<String, Object> entry: marshallerProperties.entrySet()){
+		if (marshallerProperties != null && !marshallerProperties.isEmpty())
+		{
+			for (Map.Entry<String, Object> entry : marshallerProperties.entrySet())
+			{
 				marshaller.setProperty(entry.getKey(), entry.getValue());
 			}
 		}
