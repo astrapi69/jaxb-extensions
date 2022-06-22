@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.factory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -36,8 +36,21 @@ import javax.xml.bind.Marshaller;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
+import io.github.astrapi69.jaxb.Club;
+import io.github.astrapi69.jaxb.Employee;
+import io.github.astrapi69.jaxb.TestDataFactory;
+
 class MarshallerFactoryTest
 {
+
+	@Test
+	void getPrettyPrintMarshaller()
+	{
+		Marshaller actual;
+		Club club = TestDataFactory.newClub();
+		actual = MarshallerFactory.getPrettyPrintMarshaller(club);
+		assertNotNull(actual);
+	}
 
 	@Test
 	void getMarshallerWithClass() throws JAXBException

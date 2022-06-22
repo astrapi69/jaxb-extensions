@@ -22,8 +22,9 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.factory;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.bind.JAXBContext;
@@ -32,6 +33,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 
 import lombok.NonNull;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
  * The factory class {@link MarshallerFactory} for creating {@link Marshaller} objects for
@@ -53,6 +55,16 @@ public class MarshallerFactory
 	public static <T> Marshaller getMarshaller(final @NonNull T object) throws JAXBException
 	{
 		return getMarshaller(object.getClass());
+	}
+
+	public static <T> Marshaller getPrettyPrintMarshaller(final @NonNull T object)
+	{
+		Map<String, Object> marshallerProperties = new HashMap<>();
+		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		Marshaller marshaller = RuntimeExceptionDecorator.decorate(() -> MarshallerFactory
+			.addProperties(MarshallerFactory.getMarshaller(object), marshallerProperties));
+		return RuntimeExceptionDecorator
+			.decorate(() -> MarshallerFactory.addProperties(marshaller, marshallerProperties));
 	}
 
 	public static Marshaller getMarshaller(JAXBContext context, Class aClass,

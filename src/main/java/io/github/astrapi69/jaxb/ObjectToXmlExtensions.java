@@ -25,13 +25,12 @@
 package io.github.astrapi69.jaxb;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.xml.bind.Marshaller;
 
 import lombok.NonNull;
 import io.github.astrapi69.io.StringOutputStream;
+import io.github.astrapi69.jaxb.factory.MarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 public class ObjectToXmlExtensions
@@ -39,20 +38,10 @@ public class ObjectToXmlExtensions
 
 	public static <T> String toXml(final @NonNull T object)
 	{
-		Marshaller marshaller = getMarshaller(object);
+		Marshaller marshaller = MarshallerFactory.getPrettyPrintMarshaller(object);
 		StringOutputStream outputStream = new StringOutputStream();
 		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, outputStream));
 		return outputStream.toString();
-	}
-
-	private static <T> Marshaller getMarshaller(final @NonNull T object)
-	{
-		Map<String, Object> marshallerProperties = new HashMap<>();
-		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-		Marshaller marshaller = RuntimeExceptionDecorator.decorate(() -> MarshallerFactory
-			.addProperties(MarshallerFactory.getMarshaller(object), marshallerProperties));
-		return RuntimeExceptionDecorator
-			.decorate(() -> MarshallerFactory.addProperties(marshaller, marshallerProperties));
 	}
 
 	/**
@@ -65,7 +54,7 @@ public class ObjectToXmlExtensions
 	 */
 	public static <T> void toXml(final @NonNull T object, final @NonNull File file)
 	{
-		Marshaller marshaller = getMarshaller(object);
+		Marshaller marshaller = MarshallerFactory.getPrettyPrintMarshaller(object);
 		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, file));
 	}
 }
