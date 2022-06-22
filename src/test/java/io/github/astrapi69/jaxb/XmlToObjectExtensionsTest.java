@@ -26,92 +26,48 @@ package io.github.astrapi69.jaxb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.File;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.file.read.ReadFileExtensions;
-import io.github.astrapi69.file.search.PathFinder;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
-
 /**
- * The unit test class for the class {@link ObjectToXmlExtensions}
+ * The unit test class for the class {@link XmlToObjectExtensions}
  */
-public class ObjectToXmlExtensionsTest
+public class XmlToObjectExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ObjectToXmlExtensions#toXml(Object)}
+	 * Test method for {@link XmlToObjectExtensions#toObject(String, Class)}
 	 */
 	@Test
-	void toXml()
+	public void testToObjectWithNullValue()
 	{
 		String actual;
 		String expected;
-		File xmlFile;
-		Club club;
 
-		club = TestDataFactory.newClub();
+		Company company = TestDataFactory.newCompany();
+		String xml = ObjectToXmlExtensions.toXml(company);
 
-		actual = ObjectToXmlExtensions.toXml(club);
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
-		expected = RuntimeExceptionDecorator
-			.decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
-		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link ObjectToXmlExtensions#toXml(Object)}
-	 */
-	@Test
-	public void testToXmlWithNullValue()
-	{
-		String actual;
-		String expected;
-		NullPointerException nullPointerException = Assertions
-			.assertThrows(NullPointerException.class, () -> ObjectToXmlExtensions.toXml(null));
-		expected = "object is marked non-null but is null";
-		actual = nullPointerException.getMessage();
-		assertEquals(expected, actual);
-	}
-
-	/**
-	 * Test method for {@link ObjectToXmlExtensions#toXml(Object, File)}
-	 */
-	@Test
-	void toXmlFileWithNullValues()
-	{
-		String actual;
-		String expected;
-		File xmlFile;
-		Club club;
-
-		club = TestDataFactory.newClub();
-
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "new-club-jaxb.xml");
 		NullPointerException nullPointerException = Assertions.assertThrows(
-			NullPointerException.class, () -> ObjectToXmlExtensions.toXml(club, null));
-		expected = "file is marked non-null but is null";
-		actual = nullPointerException.getMessage();
-		assertEquals(expected, actual);
-		nullPointerException = Assertions.assertThrows(NullPointerException.class,
-			() -> ObjectToXmlExtensions.toXml(null, xmlFile));
-		expected = "object is marked non-null but is null";
+			NullPointerException.class, () -> XmlToObjectExtensions.toObject(null, Company.class));
+		expected = "xmlString is marked non-null but is null";
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 
+		nullPointerException = Assertions.assertThrows(NullPointerException.class,
+			() -> XmlToObjectExtensions.toObject(xml, null));
+		expected = "clazz is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
 	}
 
 	/**
-	 * Test method for {@link ObjectToXmlExtensions}
+	 * Test method for {@link XmlToObjectExtensions}
 	 */
 	@Test
 	public void testWithBeanTester()
 	{
 		final BeanTester beanTester = new BeanTester();
-		beanTester.testBean(ObjectToXmlExtensions.class);
+		beanTester.testBean(XmlToObjectExtensions.class);
 	}
-
 }
