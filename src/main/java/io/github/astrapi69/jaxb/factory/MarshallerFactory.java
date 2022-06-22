@@ -42,14 +42,14 @@ import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 public class MarshallerFactory
 {
 
-	public static Marshaller getMarshaller(Class aClass) throws JAXBException
+	public static Marshaller getMarshaller(final @NonNull Class clazz) throws JAXBException
 	{
-		return getMarshaller(null, aClass);
+		return getMarshaller(null, clazz);
 	}
 
-	public static Marshaller getMarshaller(JAXBContext context, Class aClass) throws JAXBException
+	public static Marshaller getMarshaller(JAXBContext context, final @NonNull Class clazz) throws JAXBException
 	{
-		return getMarshaller(context, aClass, null);
+		return getMarshaller(context, clazz, null);
 	}
 
 	public static <T> Marshaller getMarshaller(final @NonNull T object) throws JAXBException
@@ -67,7 +67,7 @@ public class MarshallerFactory
 			.decorate(() -> MarshallerFactory.addProperties(marshaller, marshallerProperties));
 	}
 
-	public static Marshaller getMarshaller(JAXBContext context, Class aClass,
+	public static Marshaller getMarshaller(JAXBContext context, final @NonNull Class clazz,
 		Map<String, Object> marshallerProperties) throws JAXBException
 	{
 		JAXBContext newContext;
@@ -77,7 +77,7 @@ public class MarshallerFactory
 		}
 		else
 		{
-			newContext = JAXBContext.newInstance(aClass);
+			newContext = JAXBContext.newInstance(clazz);
 		}
 		Marshaller marshaller = newContext.createMarshaller();
 		return addProperties(marshaller, marshallerProperties);

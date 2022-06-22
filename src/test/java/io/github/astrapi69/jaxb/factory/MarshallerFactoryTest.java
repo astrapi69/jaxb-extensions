@@ -24,6 +24,7 @@
  */
 package io.github.astrapi69.jaxb.factory;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.HashMap;
@@ -33,6 +34,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
@@ -61,11 +63,67 @@ class MarshallerFactoryTest
 	}
 
 	@Test
+	void getMarshallerWithClassWithNullValue()
+	{
+		String actual;
+		String expected;
+
+		NullPointerException nullPointerException = Assertions
+			.assertThrows(NullPointerException.class, () -> MarshallerFactory.getMarshaller(null));
+		expected = "clazz is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void testGetMarshallerWithContextAndClassWithNullValue()
+	{
+		String actual;
+		String expected;
+
+		NullPointerException nullPointerException = Assertions.assertThrows(
+			NullPointerException.class, () -> MarshallerFactory.getMarshaller(null, null));
+		expected = "clazz is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	void testGetMarshallerWithContextAndClass() throws JAXBException
 	{
 		Marshaller actual;
 		actual = MarshallerFactory.getMarshaller(null, Employee.class);
 		assertNotNull(actual);
+	}
+
+	@Test
+	void testGetMarshallerWithObjectWithNullValue()
+	{
+		String actual;
+		String expected;
+		Club club;
+
+		club = null;
+		NullPointerException nullPointerException = Assertions
+			.assertThrows(NullPointerException.class, () -> MarshallerFactory.getMarshaller(club));
+		expected = "object is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void getPrettyPrintMarshallerWithNullValue()
+	{
+		String actual;
+		String expected;
+		Club club;
+
+		club = null;
+		NullPointerException nullPointerException = Assertions.assertThrows(
+			NullPointerException.class, () -> MarshallerFactory.getPrettyPrintMarshaller(club));
+		expected = "object is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
 	}
 
 	@Test
@@ -87,6 +145,43 @@ class MarshallerFactoryTest
 		actual = MarshallerFactory.getMarshaller(JAXBContext.newInstance(Employee.class),
 			Employee.class, marshallerProperties);
 		assertNotNull(actual);
+	}
+
+	@Test
+	void testGetMarshallerWithContextAndClassAndPropertiesWithNullValue()
+	{
+		String actual;
+		String expected;
+		Map<String, Object> marshallerProperties;
+
+		marshallerProperties = new HashMap<>();
+		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+		NullPointerException nullPointerException = Assertions.assertThrows(
+			NullPointerException.class,
+			() -> MarshallerFactory.getMarshaller(JAXBContext.newInstance(Employee.class), null,
+				marshallerProperties));
+		expected = "clazz is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
+	}
+
+	@Test
+	void testAddPropertiesWithNullValue()
+	{
+		String actual;
+		String expected;
+		Map<String, Object> marshallerProperties;
+
+		marshallerProperties = new HashMap<>();
+		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+		NullPointerException nullPointerException = Assertions.assertThrows(
+			NullPointerException.class,
+			() -> MarshallerFactory.addProperties(null, marshallerProperties));
+		expected = "marshaller is marked non-null but is null";
+		actual = nullPointerException.getMessage();
+		assertEquals(expected, actual);
 	}
 
 	/**
