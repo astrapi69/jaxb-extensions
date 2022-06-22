@@ -24,11 +24,19 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.util.Map;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import java.util.Map;
+import javax.xml.bind.PropertyException;
 
+import lombok.NonNull;
+
+/**
+ * The factory class {@link MarshallerFactory} for creating {@link Marshaller} objects for
+ * serializing java beans to xml string
+ */
 public class MarshallerFactory
 {
 
@@ -40,6 +48,11 @@ public class MarshallerFactory
 	public static Marshaller getMarshaller(JAXBContext context, Class aClass) throws JAXBException
 	{
 		return getMarshaller(context, aClass, null);
+	}
+
+	public static <T> Marshaller getMarshaller(final @NonNull T object) throws JAXBException
+	{
+		return getMarshaller(object.getClass());
 	}
 
 	public static Marshaller getMarshaller(JAXBContext context, Class aClass,
@@ -55,6 +68,12 @@ public class MarshallerFactory
 			newContext = JAXBContext.newInstance(aClass);
 		}
 		Marshaller marshaller = newContext.createMarshaller();
+		return addProperties(marshaller, marshallerProperties);
+	}
+
+	public static Marshaller addProperties(final @NonNull Marshaller marshaller,
+		Map<String, Object> marshallerProperties) throws PropertyException
+	{
 		if (marshallerProperties != null && !marshallerProperties.isEmpty())
 		{
 			for (Map.Entry<String, Object> entry : marshallerProperties.entrySet())
@@ -64,4 +83,5 @@ public class MarshallerFactory
 		}
 		return marshaller;
 	}
+
 }

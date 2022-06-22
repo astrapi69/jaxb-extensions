@@ -47,16 +47,12 @@ public class ObjectToXmlExtensions
 
 	private static <T> Marshaller getMarshaller(final @NonNull T object)
 	{
-		Class<T> tClass = getGenericClassType(object);
 		Map<String, Object> marshallerProperties = new HashMap<>();
 		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		Marshaller marshaller = RuntimeExceptionDecorator.decorate(() -> MarshallerFactory
+			.addProperties(MarshallerFactory.getMarshaller(object), marshallerProperties));
 		return RuntimeExceptionDecorator
-			.decorate(() -> MarshallerFactory.getMarshaller(null, tClass, marshallerProperties));
-	}
-
-	private static <T> Class<T> getGenericClassType(@NonNull T object)
-	{
-		return (Class<T>)object.getClass();
+			.decorate(() -> MarshallerFactory.addProperties(marshaller, marshallerProperties));
 	}
 
 	/**
