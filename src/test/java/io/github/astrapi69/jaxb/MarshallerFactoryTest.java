@@ -42,6 +42,14 @@ class MarshallerFactoryTest
 		actual = MarshallerFactory.getMarshaller(JAXBContext.newInstance(Employee.class),
 			Employee.class, marshallerProperties);
 		assertNotNull(actual);
+		marshallerProperties.clear();
+		actual = MarshallerFactory.getMarshaller(JAXBContext.newInstance(Employee.class),
+			Employee.class, marshallerProperties);
+		assertNotNull(actual);
+		marshallerProperties = null;
+		actual = MarshallerFactory.getMarshaller(JAXBContext.newInstance(Employee.class),
+			Employee.class, marshallerProperties);
+		assertNotNull(actual);
 	}
 
 	/**
