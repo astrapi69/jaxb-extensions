@@ -7,9 +7,20 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 class UnmarshallerFactoryTest
 {
+
+	/**
+	 * Test method for {@link UnmarshallerFactory}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(UnmarshallerFactory.class);
+	}
 
 	@Test
 	void getUnmarshallerWithClass() throws JAXBException

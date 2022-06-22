@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.checksum.FileChecksumExtensions;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
@@ -15,6 +16,16 @@ import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 class ObjectToXmlConverterTest
 {
+
+	/**
+	 * Test method for {@link ObjectToXmlConverter}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ObjectToXmlConverter.class);
+	}
 
 	@Test
 	void toXml()

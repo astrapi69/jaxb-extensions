@@ -10,6 +10,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 class MarshallerFactoryTest
 {
@@ -41,5 +42,15 @@ class MarshallerFactoryTest
 		actual = MarshallerFactory.getMarshaller(JAXBContext.newInstance(Employee.class),
 			Employee.class, marshallerProperties);
 		assertNotNull(actual);
+	}
+
+	/**
+	 * Test method for {@link MarshallerFactory}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(MarshallerFactory.class);
 	}
 }

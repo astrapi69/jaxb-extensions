@@ -3,9 +3,20 @@ package io.github.astrapi69.jaxb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 class XmlToObjectConverterTest
 {
+
+	/**
+	 * Test method for {@link UnmarshallerFactory}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(UnmarshallerFactory.class);
+	}
 
 	@Test
 	void toObjectClub()
