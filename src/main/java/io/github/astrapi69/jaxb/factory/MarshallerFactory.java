@@ -47,7 +47,8 @@ public class MarshallerFactory
 		return getMarshaller(null, clazz);
 	}
 
-	public static Marshaller getMarshaller(JAXBContext context, final @NonNull Class clazz) throws JAXBException
+	public static Marshaller getMarshaller(JAXBContext context, final @NonNull Class clazz)
+		throws JAXBException
 	{
 		return getMarshaller(context, clazz, null);
 	}
