@@ -15,6 +15,9 @@ import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
+/**
+ * The unit test class for the class {@link ObjectToXmlConverter}
+ */
 class ObjectToXmlConverterTest
 {
 
@@ -28,6 +31,9 @@ class ObjectToXmlConverterTest
 		beanTester.testBean(ObjectToXmlConverter.class);
 	}
 
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object)}
+	 */
 	@Test
 	void toXml()
 	{
@@ -62,9 +68,11 @@ class ObjectToXmlConverterTest
 		assertEquals(expected, actual);
 	}
 
-
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object, File)}
+	 */
 	@Test
-	void toXmlFileWithNullValues() throws IOException
+	void toXmlFileWithNullValues()
 	{
 		String actual;
 		String expected;
@@ -76,7 +84,6 @@ class ObjectToXmlConverterTest
 		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "new-club-jaxb.xml");
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 
-		converter.toXml(club, xmlFile);
 		NullPointerException nullPointerException = Assertions
 			.assertThrows(NullPointerException.class, () -> converter.toXml(club, null));
 		expected = "file is marked non-null but is null";
@@ -90,6 +97,9 @@ class ObjectToXmlConverterTest
 
 	}
 
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object, File)}
+	 */
 	@Test
 	void toXmlFile() throws IOException
 	{
@@ -110,6 +120,9 @@ class ObjectToXmlConverterTest
 		RuntimeExceptionDecorator.decorate(() -> DeleteFileExtensions.delete(xmlFile));
 	}
 
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object)}
+	 */
 	@Test
 	void toXmlWithCompany()
 	{
@@ -128,6 +141,9 @@ class ObjectToXmlConverterTest
 		assertEquals(expected, actual);
 	}
 
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object, File)}
+	 */
 	@Test
 	void toXmlFileWithCompany() throws IOException
 	{
