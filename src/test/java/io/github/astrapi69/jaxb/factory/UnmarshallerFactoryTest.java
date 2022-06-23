@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.factory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -33,6 +33,11 @@ import javax.xml.bind.Unmarshaller;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
+import io.github.astrapi69.jaxb.Employee;
+
+/**
+ * The unit test class for the class {@link UnmarshallerFactory}
+ */
 class UnmarshallerFactoryTest
 {
 
@@ -46,28 +51,47 @@ class UnmarshallerFactoryTest
 		beanTester.testBean(UnmarshallerFactory.class);
 	}
 
+	/**
+	 * Test method for {@link UnmarshallerFactory#newUnmarshaller(Class)}
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
 	@Test
-	void getUnmarshallerWithClass() throws JAXBException
+	void testNewUnmarshallerWithClass() throws JAXBException
 	{
 		Unmarshaller actual;
-		actual = UnmarshallerFactory.getUnmarshaller(Employee.class);
+		actual = UnmarshallerFactory.newUnmarshaller(Employee.class);
 		assertNotNull(actual);
 	}
 
+	/**
+	 * Test method for {@link UnmarshallerFactory#newUnmarshaller(JAXBContext)}
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
 	@Test
-	void testGetUnmarshallerWithContext() throws JAXBException
+	void testNewUnmarshallerWithContext() throws JAXBException
 	{
 		Unmarshaller actual;
-		actual = UnmarshallerFactory.getUnmarshaller(JAXBContext.newInstance(Employee.class));
+		actual = UnmarshallerFactory.newUnmarshaller(JAXBContext.newInstance(Employee.class));
 		assertNotNull(actual);
 	}
 
+	/**
+	 * Test method for {@link UnmarshallerFactory#newUnmarshaller(JAXBContext, Class)}
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
 	@Test
 	void testGetUnmarshallerWithContextAndClass() throws JAXBException
 	{
 		Unmarshaller actual;
-		actual = UnmarshallerFactory.getUnmarshaller(JAXBContext.newInstance(Employee.class),
+		actual = UnmarshallerFactory.newUnmarshaller(JAXBContext.newInstance(Employee.class),
 			Employee.class);
 		assertNotNull(actual);
 	}
+
 }

@@ -42,33 +42,91 @@ import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 public class MarshallerFactory
 {
 
-	public static Marshaller getMarshaller(final @NonNull Class clazz) throws JAXBException
+	/**
+	 * Factory method for create a new {@link Marshaller} object
+	 * 
+	 * @param clazz
+	 *            the {@link Class} object
+	 * @return the new created {@link Marshaller} object
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
+	public static Marshaller newMarshaller(final @NonNull Class clazz) throws JAXBException
 	{
-		return getMarshaller(null, clazz);
+		return newMarshaller(null, clazz);
 	}
 
-	public static Marshaller getMarshaller(JAXBContext context, final @NonNull Class clazz)
+	/**
+	 * Factory method for create a new {@link Marshaller} object
+	 *
+	 * @param context
+	 *            the {@link JAXBContext} object
+	 * @param clazz
+	 *            the {@link Class} object
+	 * @return the new created {@link Marshaller} object
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
+	public static Marshaller newMarshaller(JAXBContext context, final @NonNull Class clazz)
 		throws JAXBException
 	{
-		return getMarshaller(context, clazz, null);
+		return newMarshaller(context, clazz, null);
 	}
 
-	public static <T> Marshaller getMarshaller(final @NonNull T object) throws JAXBException
+	/**
+	 * Factory method for create a new {@link Marshaller} object
+	 *
+	 * @param <T>
+	 *            the generic type of the given object
+	 * @param object
+	 *            the generic object
+	 * @return the new created {@link Marshaller} object
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
+	public static <T> Marshaller newMarshaller(final @NonNull T object) throws JAXBException
 	{
-		return getMarshaller(object.getClass());
+		return newMarshaller(object.getClass());
 	}
 
-	public static <T> Marshaller getPrettyPrintMarshaller(final @NonNull T object)
+	/**
+	 * Factory method for create a new {@link Marshaller} object that can make a pretty print of the
+	 * xml output
+	 *
+	 * @param <T>
+	 *            the generic type of the given object
+	 * @param object
+	 *            the generic object
+	 * @return the new created {@link Marshaller} object
+	 */
+	public static <T> Marshaller newPrettyPrintMarshaller(final @NonNull T object)
 	{
 		Map<String, Object> marshallerProperties = new HashMap<>();
 		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 		Marshaller marshaller = RuntimeExceptionDecorator.decorate(() -> MarshallerFactory
-			.addProperties(MarshallerFactory.getMarshaller(object), marshallerProperties));
+			.addProperties(MarshallerFactory.newMarshaller(object), marshallerProperties));
 		return RuntimeExceptionDecorator
 			.decorate(() -> MarshallerFactory.addProperties(marshaller, marshallerProperties));
 	}
 
-	public static Marshaller getMarshaller(JAXBContext context, final @NonNull Class clazz,
+	/**
+	 * Factory method for create a new {@link Marshaller} object
+	 *
+	 * @param context
+	 *            the {@link JAXBContext} object
+	 * @param clazz
+	 *            the {@link Class} object
+	 * @param marshallerProperties
+	 *            the {@link Map} object with the marshaller properties
+	 * @return the new created {@link Marshaller} object
+	 *
+	 * @throws JAXBException
+	 *             is thrown if an error was encountered while creating the {@code JAXBContext}
+	 */
+	public static Marshaller newMarshaller(JAXBContext context, final @NonNull Class clazz,
 		Map<String, Object> marshallerProperties) throws JAXBException
 	{
 		JAXBContext newContext;
@@ -84,6 +142,17 @@ public class MarshallerFactory
 		return addProperties(marshaller, marshallerProperties);
 	}
 
+	/**
+	 * Add the given marshaller properties to the given {@link Marshaller} object
+	 *
+	 * @param marshaller
+	 *            the {@link Marshaller} object
+	 * @param marshallerProperties
+	 *            the {@link Map} object with the marshaller properties
+	 * @return the new {@link Marshaller} object with the given marshaller properties
+	 * @throws PropertyException
+	 *             is thrown if there is an error processing the given property or value
+	 */
 	public static Marshaller addProperties(final @NonNull Marshaller marshaller,
 		Map<String, Object> marshallerProperties) throws PropertyException
 	{

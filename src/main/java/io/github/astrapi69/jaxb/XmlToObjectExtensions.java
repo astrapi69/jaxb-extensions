@@ -29,15 +29,31 @@ import java.io.StringReader;
 import javax.xml.bind.Unmarshaller;
 
 import lombok.NonNull;
+import io.github.astrapi69.jaxb.factory.UnmarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
+/**
+ * The class {@link XmlToObjectExtensions} provides methods for convert xml string objects to java
+ * objects
+ */
 public class XmlToObjectExtensions
 {
+
+	/**
+	 * Creates from the given xml string a java object.
+	 *
+	 * @param <T>
+	 *            the generic type of the return type
+	 * @param xmlString
+	 *            the xml as string object
+	 * @return the xml string
+	 */
 	public static <T> T toObject(final @NonNull String xmlString, final @NonNull Class<T> clazz)
 	{
 		Unmarshaller unmarshaller = RuntimeExceptionDecorator
-			.decorate(() -> UnmarshallerFactory.getUnmarshaller(clazz));
+			.decorate(() -> UnmarshallerFactory.newUnmarshaller(clazz));
 		return (T)RuntimeExceptionDecorator
 			.decorate(() -> unmarshaller.unmarshal(new StringReader(xmlString)));
 	}
+
 }

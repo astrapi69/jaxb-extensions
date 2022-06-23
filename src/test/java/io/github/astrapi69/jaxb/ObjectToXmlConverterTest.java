@@ -123,6 +123,9 @@ class ObjectToXmlConverterTest
 
 	/**
 	 * Test method for {@link ObjectToXmlConverter#toXml(Object, File)}
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	@Test
 	void toXmlFile() throws IOException

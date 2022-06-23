@@ -33,16 +33,12 @@ import io.github.astrapi69.io.StringOutputStream;
 import io.github.astrapi69.jaxb.factory.MarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
+/**
+ * The class {@link ObjectToXmlExtensions} provides methods for convert java objects to xml string
+ * objects
+ */
 public class ObjectToXmlExtensions
 {
-
-	public static <T> String toXml(final @NonNull T object)
-	{
-		Marshaller marshaller = MarshallerFactory.getPrettyPrintMarshaller(object);
-		StringOutputStream outputStream = new StringOutputStream();
-		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, outputStream));
-		return outputStream.toString();
-	}
 
 	/**
 	 * Converts the given object to a xml string
@@ -51,10 +47,29 @@ public class ObjectToXmlExtensions
 	 *            the generic type of the return type
 	 * @param object
 	 *            the object to convert to xml
+	 * @return the xml string
+	 */
+	public static <T> String toXml(final @NonNull T object)
+	{
+		Marshaller marshaller = MarshallerFactory.newPrettyPrintMarshaller(object);
+		StringOutputStream outputStream = new StringOutputStream();
+		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, outputStream));
+		return outputStream.toString();
+	}
+
+	/**
+	 * Converts the given object to a xml string and write it to the given file object
+	 *
+	 * @param <T>
+	 *            the generic type of the return type
+	 * @param object
+	 *            the object to convert to xml
+	 * @param file
+	 *            the file object
 	 */
 	public static <T> void toXml(final @NonNull T object, final @NonNull File file)
 	{
-		Marshaller marshaller = MarshallerFactory.getPrettyPrintMarshaller(object);
+		Marshaller marshaller = MarshallerFactory.newPrettyPrintMarshaller(object);
 		RuntimeExceptionDecorator.decorate(() -> marshaller.marshal(object, file));
 	}
 }
