@@ -7,7 +7,7 @@ dependencies {
     implementation("javax.xml.bind:jaxb-api:$jaxbApiVersion")
     implementation("com.sun.xml.bind:jaxb-core:$jaxbCoreVersion")
     implementation("com.sun.xml.bind:jaxb-impl:$jaxbImplVersion")
-    implementation("io.github.astrapi69:throw-able:$throwAbleVersion")
+    implementation("io.github.astrapi69:throwable:$throwableVersion")
     implementation("io.github.astrapi69:silly-strings:$sillyStringsVersion")
     implementation("io.github.astrapi69:xml-api:$xmlApiVersion")
 
