@@ -30,10 +30,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
@@ -41,6 +37,9 @@ import org.meanbean.test.BeanTester;
 import io.github.astrapi69.jaxb.Club;
 import io.github.astrapi69.jaxb.Employee;
 import io.github.astrapi69.jaxb.TestDataFactory;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 
 /**
  * The unit test class for the class {@link MarshallerFactory}

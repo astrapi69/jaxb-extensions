@@ -26,11 +26,10 @@ package io.github.astrapi69.jaxb;
 
 import java.io.StringReader;
 
-import javax.xml.bind.Unmarshaller;
-
 import lombok.NonNull;
 import io.github.astrapi69.jaxb.factory.UnmarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  * The class {@link XmlToObjectExtensions} provides methods for convert xml string objects to java

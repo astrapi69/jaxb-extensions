@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.jaxb.factory;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  * The factory class {@link UnmarshallerFactory} for creating {@link Unmarshaller} objects for

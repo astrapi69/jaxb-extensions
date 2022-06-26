@@ -27,13 +27,12 @@ package io.github.astrapi69.jaxb.factory;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
-
 import lombok.NonNull;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.PropertyException;
 
 /**
  * The factory class {@link MarshallerFactory} for creating {@link Marshaller} objects for

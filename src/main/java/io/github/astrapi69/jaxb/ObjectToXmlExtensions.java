@@ -26,12 +26,11 @@ package io.github.astrapi69.jaxb;
 
 import java.io.File;
 
-import javax.xml.bind.Marshaller;
-
 import lombok.NonNull;
 import io.github.astrapi69.io.StringOutputStream;
 import io.github.astrapi69.jaxb.factory.MarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import jakarta.xml.bind.Marshaller;
 
 /**
  * The class {@link ObjectToXmlExtensions} provides methods for convert java objects to xml string

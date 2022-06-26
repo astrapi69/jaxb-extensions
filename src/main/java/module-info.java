@@ -22,42 +22,10 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlType;
-
-@Data
-@NoArgsConstructor
-@SuperBuilder
-@XmlRootElement(name = "person")
-@XmlType(propOrder = { "name", "gender", "married", "nickname" })
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Person
-{
-	/**
-	 * The name.
-	 */
-	private String name;
-
-	/**
-	 * The about.
-	 */
-	private String gender;
-
-	/**
-	 * The married flag.
-	 */
-	private Boolean married;
-
-	/**
-	 * The nickname.
-	 */
-	private String nickname;
-
+module jaxb.extensions.main {
+	requires jakarta.xml.bind;
+	requires lombok;
+	requires throwable;
+	requires xml.api.main;
+	requires silly.io.main;
 }

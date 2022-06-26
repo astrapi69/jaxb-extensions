@@ -26,14 +26,13 @@ package io.github.astrapi69.jaxb.factory;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.jaxb.Employee;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 
 /**
  * The unit test class for the class {@link UnmarshallerFactory}
