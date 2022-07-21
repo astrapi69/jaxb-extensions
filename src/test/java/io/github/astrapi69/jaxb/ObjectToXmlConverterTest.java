@@ -66,6 +66,7 @@ class ObjectToXmlConverterTest
 		File xmlFile;
 		Club club;
 
+
 		club = TestDataFactory.newClub();
 
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
@@ -74,6 +75,28 @@ class ObjectToXmlConverterTest
 		expected = RuntimeExceptionDecorator
 			.decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
 		assertEquals(expected, actual);
+
+	}
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object)}
+	 */
+	@Test
+	void toXmlEntryModel()
+	{
+		String actual;
+		String expected;
+		File xmlFile;
+		EntryModel entryModel;
+
+		entryModel = TestDataFactory.newEntryModel();
+
+		ObjectToXmlConverter converter = new ObjectToXmlConverter();
+		actual = converter.toXml(entryModel);
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "entry-jaxb.xml");
+		expected = RuntimeExceptionDecorator
+			.decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
+		assertEquals(expected, actual);
+
 	}
 
 	/**

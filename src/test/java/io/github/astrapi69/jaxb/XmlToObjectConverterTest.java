@@ -64,6 +64,25 @@ class XmlToObjectConverterTest
 		assertEquals(expected, actual);
 	}
 
+
+	/**
+	 * Test method for {@link XmlToObjectConverter#toObject(String, Class)}
+	 */
+	@Test
+	void toObjectEntryModel()
+	{
+		EntryModel actual;
+		EntryModel expected;
+		expected = TestDataFactory.newEntryModel();
+
+		ObjectToXmlConverter converter = new ObjectToXmlConverter();
+		String xml = converter.toXml(expected);
+
+		XmlToObjectConverter xmlToObjectConverter = new XmlToObjectConverter();
+		actual = xmlToObjectConverter.toObject(xml, EntryModel.class);
+		assertEquals(expected, actual);
+	}
+
 	/**
 	 * Test method for {@link XmlToObjectConverter#toObject(String, Class)}
 	 */

@@ -24,11 +24,28 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class TestDataFactory
 {
+
+	public static EntryModel newEntryModel() {
+		return EntryModel.builder()
+			.id(UUID.fromString("37c2aa6f-08d2-4007-9f79-b61275dd3aaa"))
+			.title("Foo")
+			.userName("Anton")
+			.password("isEncrypted")
+			.icon("favicon.ico")
+			.url("https://astrapi69.github.io/")
+			.notes("Some notes")
+			.expirable(true)
+			.expires(LocalDateTime.of(2035, Month.AUGUST, 28, 16, 30))
+			.build();
+	}
 
 	public static Club newClub()
 	{

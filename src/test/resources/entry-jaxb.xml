@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:entryModel xmlns:ns2="io.github.astrapi69.jaxb">
+    <id>37c2aa6f-08d2-4007-9f79-b61275dd3aaa</id>
+    <title>Foo</title>
+    <userName>Anton</userName>
+    <password>isEncrypted</password>
+    <url>https://astrapi69.github.io/</url>
+    <notes>Some notes</notes>
+    <expirable>true</expirable>
+    <expires>2035-08-28T16:30</expires>
+    <icon>favicon.ico</icon>
+</ns2:entryModel>
