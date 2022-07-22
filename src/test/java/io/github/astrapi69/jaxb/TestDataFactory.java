@@ -34,6 +34,7 @@ public class TestDataFactory
 {
 
 	public static EntryModel newEntryModel() {
+
 		return EntryModel.builder()
 			.id(UUID.fromString("37c2aa6f-08d2-4007-9f79-b61275dd3aaa"))
 			.title("Foo")

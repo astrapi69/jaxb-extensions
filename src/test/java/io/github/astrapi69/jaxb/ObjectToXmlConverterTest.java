@@ -77,6 +77,7 @@ class ObjectToXmlConverterTest
 		assertEquals(expected, actual);
 
 	}
+
 	/**
 	 * Test method for {@link ObjectToXmlConverter#toXml(Object)}
 	 */
