@@ -24,28 +24,36 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import io.github.astrapi69.file.search.PathFinder;
+
 public class TestDataFactory
 {
 
-	public static EntryModel newEntryModel() {
+	public static MasterPwFileModel newMasterPwFileModel()
+	{
 
-		return EntryModel.builder()
-			.id(UUID.fromString("37c2aa6f-08d2-4007-9f79-b61275dd3aaa"))
-			.title("Foo")
-			.userName("Anton")
-			.password("isEncrypted")
-			.icon("favicon.ico")
-			.url("https://astrapi69.github.io/")
-			.notes("Some notes")
-			.expirable(true)
-			.expires(LocalDateTime.of(2035, Month.AUGUST, 28, 16, 30))
-			.build();
+		File applicationFile;
+
+		applicationFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+
+		// @formatter:on
+		return MasterPwFileModel.builder().applicationFile(applicationFile).build();
+		// @formatter:off
+	}
+	public static EntryModel newEntryModel() {
+		// @formatter:on
+		return EntryModel.builder().id(UUID.fromString("37c2aa6f-08d2-4007-9f79-b61275dd3aaa"))
+			.title("Foo").userName("Anton").password("isEncrypted").icon("favicon.ico")
+			.url("https://astrapi69.github.io/").notes("Some notes").expirable(true)
+			.expires(LocalDateTime.of(2035, Month.AUGUST, 28, 16, 30)).build();
+		// @formatter:off
 	}
 
 	public static Club newClub()

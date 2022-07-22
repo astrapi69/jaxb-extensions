@@ -104,6 +104,29 @@ class ObjectToXmlConverterTest
 	 * Test method for {@link ObjectToXmlConverter#toXml(Object)}
 	 */
 	@Test
+	void toXmlMasterPwFileModel()
+	{
+		String actual;
+		String expected;
+		File xmlFile;
+		MasterPwFileModel testData;
+
+		testData = TestDataFactory.newMasterPwFileModel();
+
+		ObjectToXmlConverter converter = new ObjectToXmlConverter();
+		// TODO continue here ...
+		// actual = converter.toXml(testData);
+		// xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "master-pw-jaxb.xml");
+		// expected = RuntimeExceptionDecorator
+		// .decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
+		// assertEquals(expected, actual);
+
+	}
+
+	/**
+	 * Test method for {@link ObjectToXmlConverter#toXml(Object)}
+	 */
+	@Test
 	public void testToXmlWithNullValue()
 	{
 		String actual;

@@ -11,6 +11,7 @@ dependencies {
     implementation("io.github.astrapi69:silly-io:$sillyIoVersion")
 
     testImplementation("io.github.astrapi69:crypt-api:$cryptApiVersion")
+    testImplementation("io.github.astrapi69:crypt-data:$cryptDataVersion")
     testImplementation("io.github.astrapi69:checksum-up:$checksumUpVersion")
     testImplementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
     testImplementation("org.meanbean:meanbean:$meanbeanVersion")
