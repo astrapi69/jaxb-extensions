@@ -24,36 +24,31 @@
  */
 package io.github.astrapi69.jaxb;
 
-import java.io.StringReader;
-
+import io.github.astrapi69.xml.api.ObjectToXml;
+import io.github.astrapi69.xml.api.ObjectToXmlFile;
 import lombok.NonNull;
-import io.github.astrapi69.jaxb.factory.UnmarshallerFactory;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
-import jakarta.xml.bind.Unmarshaller;
+
+import java.io.File;
 
 /**
- * The class {@link XmlToObjectExtensions} provides methods for convert xml string objects to java
- * objects
+ * The class {@link ObjectToXmlFileConverter} provides a single method for convert an object to a
+ * xml file
  */
-public class XmlToObjectExtensions
+public class ObjectToXmlFileConverter implements ObjectToXmlFile
 {
 
 	/**
-	 * Creates from the given xml string a java object.
+	 * Converts the given object to a xml string
 	 *
 	 * @param <T>
 	 *            the generic type of the return type
-	 * @param xmlString
-	 *            the xml as string object
-	 * @return the xml string
+	 * @param object
+	 *            the object to convert to xml
+	 * @return the xml string from the given object
 	 */
-	@SuppressWarnings("unchecked")
-	public static <T> T toObject(final @NonNull String xmlString, final @NonNull Class<T> clazz)
+	@Override
+	public <T> void toXml(final @NonNull T object, final @NonNull File file)
 	{
-		Unmarshaller unmarshaller = RuntimeExceptionDecorator
-			.decorate(() -> UnmarshallerFactory.newUnmarshaller(clazz));
-		return (T)RuntimeExceptionDecorator
-			.decorate(() -> unmarshaller.unmarshal(new StringReader(xmlString)));
+		ObjectToXmlExtensions.toXml(object, file);
 	}
-
 }

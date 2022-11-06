@@ -34,7 +34,7 @@ import io.github.astrapi69.xml.api.ObjectToXmlFile;
  * The class {@link ObjectToXmlConverter} provides a single method for convert an object to a xml
  * string
  */
-public class ObjectToXmlConverter implements ObjectToXml, ObjectToXmlFile
+public class ObjectToXmlConverter implements ObjectToXml
 {
 
 	/**
@@ -44,19 +44,5 @@ public class ObjectToXmlConverter implements ObjectToXml, ObjectToXmlFile
 	public <T> String toXml(final @NonNull T object)
 	{
 		return ObjectToXmlExtensions.toXml(object);
-	}
-
-	/**
-	 * Converts the given object to a xml string
-	 *
-	 * @param <T>
-	 *            the generic type of the return type
-	 * @param object
-	 *            the object to convert to xml
-	 * @return the xml string from the given object
-	 */
-	public <T> void toXml(final @NonNull T object, final @NonNull File file)
-	{
-		ObjectToXmlExtensions.toXml(object, file);
 	}
 }
