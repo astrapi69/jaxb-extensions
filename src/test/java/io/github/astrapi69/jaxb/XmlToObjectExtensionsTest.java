@@ -49,7 +49,8 @@ public class XmlToObjectExtensionsTest
 		String xml = ObjectToXmlExtensions.toXml(company);
 
 		NullPointerException nullPointerException = Assertions.assertThrows(
-			NullPointerException.class, () -> XmlToObjectExtensions.toObject(null, Company.class));
+			NullPointerException.class,
+			() -> XmlToObjectExtensions.toObject((String)null, Company.class));
 		expected = "xmlString is marked non-null but is null";
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);

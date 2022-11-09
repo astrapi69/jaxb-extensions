@@ -4,6 +4,11 @@
 Version 1.2-SNAPSHOT
 -------------
 
+ADDED:
+
+- new converter class that transforms a xml file to a java object
+- new extension class that transforms a xml file to a java object
+
 CHANGED:
 
 - update of gradle to new version 7.6-rc-1
