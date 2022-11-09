@@ -24,19 +24,40 @@
  */
 package io.github.astrapi69.jaxb;
 
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import io.github.astrapi69.file.search.PathFinder;
+import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.io.File;
+import java.util.HashSet;
 
-public class LocalDateAdapter extends XmlAdapter<String, LocalDate>
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+/**
+ * The unit test class for the class {@link XmlFileToObjectConverter}
+ */
+public class XmlFileToObjectConverterTest
 {
-	public LocalDate unmarshal(String localDateAsString) throws Exception
-	{
-		return LocalDate.parse(localDateAsString);
-	}
 
-	public String marshal(LocalDate localDate) throws Exception
+
+	/**
+	 * Test method for {@link XmlFileToObjectConverter#toObject(File, Class)}
+	 */
+	@Test
+	void toObjectFileClass()
 	{
-		return localDate.toString();
+		Club actual;
+		Club expected;
+		File xmlFile;
+		Club club;
+
+		club = TestDataFactory.newClub();
+
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+		XmlFileToObjectConverter converter = new XmlFileToObjectConverter();
+		actual = converter.toObject(xmlFile, Club.class);
+		assertNotNull(actual);
+		expected = club;
+		assertEquals(actual, expected);
 	}
 }

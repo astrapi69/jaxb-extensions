@@ -24,19 +24,50 @@
  */
 package io.github.astrapi69.jaxb;
 
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+import io.github.astrapi69.file.search.PathFinder;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
-import java.time.LocalDate;
+import java.io.File;
 
-public class LocalDateAdapter extends XmlAdapter<String, LocalDate>
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+/**
+ * The unit test class for the class {@link XmlFileToObjectExtensions}
+ */
+public class XmlFileToObjectExtensionsTest
 {
-	public LocalDate unmarshal(String localDateAsString) throws Exception
+
+	/**
+	 * Test method for {@link XmlFileToObjectExtensions#toObject(File, Class)}
+	 */
+	@Test
+	void toObjectFileClass()
 	{
-		return LocalDate.parse(localDateAsString);
+		Club actual;
+		Club expected;
+		File xmlFile;
+		Club club;
+
+		club = TestDataFactory.newClub();
+
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+
+		actual = XmlFileToObjectExtensions.toObject(xmlFile, Club.class);
+		assertNotNull(actual);
+		expected = club;
+		assertEquals(actual, expected);
 	}
 
-	public String marshal(LocalDate localDate) throws Exception
+	/**
+	 * Test method for {@link XmlFileToObjectExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
 	{
-		return localDate.toString();
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(XmlFileToObjectExtensions.class);
 	}
+
 }

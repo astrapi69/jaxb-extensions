@@ -82,10 +82,10 @@ class MarshallerFactoryTest
 		String actual;
 		String expected;
 
-		NullPointerException nullPointerException = Assertions
-			.assertThrows(NullPointerException.class, () -> MarshallerFactory.newMarshaller(null));
-		expected = "clazz is marked non-null but is null";
-		actual = nullPointerException.getMessage();
+		IllegalArgumentException illegalArgumentException = Assertions.assertThrows(
+			IllegalArgumentException.class, () -> MarshallerFactory.newMarshaller(null));
+		expected = null;
+		actual = illegalArgumentException.getMessage();
 		assertEquals(expected, actual);
 	}
 
@@ -98,9 +98,9 @@ class MarshallerFactoryTest
 		String actual;
 		String expected;
 
-		NullPointerException nullPointerException = Assertions.assertThrows(
-			NullPointerException.class, () -> MarshallerFactory.newMarshaller(null, null));
-		expected = "clazz is marked non-null but is null";
+		IllegalArgumentException nullPointerException = Assertions.assertThrows(
+			IllegalArgumentException.class, () -> MarshallerFactory.newMarshaller(null, null));
+		expected = null;
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -129,7 +129,7 @@ class MarshallerFactoryTest
 		club = null;
 		NullPointerException nullPointerException = Assertions
 			.assertThrows(NullPointerException.class, () -> MarshallerFactory.newMarshaller(club));
-		expected = "object is marked non-null but is null";
+		expected = null;
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -145,10 +145,10 @@ class MarshallerFactoryTest
 		Club club;
 
 		club = null;
-		NullPointerException nullPointerException = Assertions.assertThrows(
-			NullPointerException.class, () -> MarshallerFactory.newPrettyPrintMarshaller(club));
-		expected = "object is marked non-null but is null";
-		actual = nullPointerException.getMessage();
+		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+			() -> MarshallerFactory.newPrettyPrintMarshaller(club));
+		expected = "java.lang.NullPointerException";
+		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
 	}
 
@@ -177,28 +177,6 @@ class MarshallerFactoryTest
 	}
 
 	/**
-	 * Test method for {@link MarshallerFactory#newMarshaller(JAXBContext, Class, Map)}
-	 */
-	@Test
-	void testGetMarshallerWithContextAndClassAndPropertiesWithNullValue()
-	{
-		String actual;
-		String expected;
-		Map<String, Object> marshallerProperties;
-
-		marshallerProperties = new HashMap<>();
-		marshallerProperties.put(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-		NullPointerException nullPointerException = Assertions.assertThrows(
-			NullPointerException.class,
-			() -> MarshallerFactory.newMarshaller(JAXBContext.newInstance(Employee.class), null,
-				marshallerProperties));
-		expected = "clazz is marked non-null but is null";
-		actual = nullPointerException.getMessage();
-		assertEquals(expected, actual);
-	}
-
-	/**
 	 * Test method for {@link MarshallerFactory#addProperties(Marshaller, Map)}
 	 */
 	@Test
@@ -214,7 +192,7 @@ class MarshallerFactoryTest
 		NullPointerException nullPointerException = Assertions.assertThrows(
 			NullPointerException.class,
 			() -> MarshallerFactory.addProperties(null, marshallerProperties));
-		expected = "marshaller is marked non-null but is null";
+		expected = null;
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 	}

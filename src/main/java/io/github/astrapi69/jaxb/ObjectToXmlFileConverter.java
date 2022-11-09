@@ -24,7 +24,6 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.xml.api.ObjectToXml;
 import io.github.astrapi69.xml.api.ObjectToXmlFile;
 import lombok.NonNull;
 
