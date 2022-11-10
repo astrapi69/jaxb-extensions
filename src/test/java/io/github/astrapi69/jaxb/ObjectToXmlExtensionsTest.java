@@ -70,9 +70,9 @@ public class ObjectToXmlExtensionsTest
 	{
 		String actual;
 		String expected;
-		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+		RuntimeException runtimeException = Assertions.assertThrows(NullPointerException.class,
 			() -> ObjectToXmlExtensions.toXml(null));
-		expected = "java.lang.NullPointerException";
+		expected = "object is marked non-null but is null";
 		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -91,17 +91,16 @@ public class ObjectToXmlExtensionsTest
 		club = TestDataFactory.newClub();
 
 		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "new-club-jaxb.xml");
-		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+		RuntimeException runtimeException = Assertions.assertThrows(NullPointerException.class,
 			() -> ObjectToXmlExtensions.toXml(club, null));
-		expected = "java.lang.IllegalArgumentException: output parameter must not be null";
+		expected = "file is marked non-null but is null";
 		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
-		runtimeException = Assertions.assertThrows(RuntimeException.class,
+		runtimeException = Assertions.assertThrows(NullPointerException.class,
 			() -> ObjectToXmlExtensions.toXml(null, xmlFile));
-		expected = "java.lang.NullPointerException";
+		expected = "object is marked non-null but is null";
 		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
-
 	}
 
 	/**

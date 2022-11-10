@@ -82,9 +82,9 @@ class MarshallerFactoryTest
 		String actual;
 		String expected;
 
-		IllegalArgumentException illegalArgumentException = Assertions.assertThrows(
-			IllegalArgumentException.class, () -> MarshallerFactory.newMarshaller(null));
-		expected = null;
+		NullPointerException illegalArgumentException = Assertions
+			.assertThrows(NullPointerException.class, () -> MarshallerFactory.newMarshaller(null));
+		expected = "clazz is marked non-null but is null";
 		actual = illegalArgumentException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -98,9 +98,9 @@ class MarshallerFactoryTest
 		String actual;
 		String expected;
 
-		IllegalArgumentException nullPointerException = Assertions.assertThrows(
-			IllegalArgumentException.class, () -> MarshallerFactory.newMarshaller(null, null));
-		expected = null;
+		NullPointerException nullPointerException = Assertions.assertThrows(
+			NullPointerException.class, () -> MarshallerFactory.newMarshaller(null, null));
+		expected = "clazz is marked non-null but is null";
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -129,7 +129,7 @@ class MarshallerFactoryTest
 		club = null;
 		NullPointerException nullPointerException = Assertions
 			.assertThrows(NullPointerException.class, () -> MarshallerFactory.newMarshaller(club));
-		expected = null;
+		expected = "object is marked non-null but is null";
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -145,9 +145,9 @@ class MarshallerFactoryTest
 		Club club;
 
 		club = null;
-		RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,
+		RuntimeException runtimeException = Assertions.assertThrows(NullPointerException.class,
 			() -> MarshallerFactory.newPrettyPrintMarshaller(club));
-		expected = "java.lang.NullPointerException";
+		expected = "object is marked non-null but is null";
 		actual = runtimeException.getMessage();
 		assertEquals(expected, actual);
 	}
@@ -192,7 +192,7 @@ class MarshallerFactoryTest
 		NullPointerException nullPointerException = Assertions.assertThrows(
 			NullPointerException.class,
 			() -> MarshallerFactory.addProperties(null, marshallerProperties));
-		expected = null;
+		expected = "marshaller is marked non-null but is null";
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
 	}

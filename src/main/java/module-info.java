@@ -28,4 +28,6 @@ module jaxb.extensions.main {
 	requires throwable;
 	requires xml.api.main;
 	requires silly.io.main;
+	exports io.github.astrapi69.jaxb;
+	exports io.github.astrapi69.jaxb.factory;
 }
