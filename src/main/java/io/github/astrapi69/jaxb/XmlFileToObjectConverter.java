@@ -30,7 +30,7 @@ import lombok.NonNull;
 import java.io.File;
 
 /**
- * The class {@link XmlFileToObjectConverter} can convert a given xml string to an object
+ * The class {@link XmlFileToObjectConverter} can convert a given xml file to an object
  */
 public class XmlFileToObjectConverter implements XmlFileToObject
 {

@@ -26,6 +26,7 @@ package io.github.astrapi69.jaxb;
 
 import io.github.astrapi69.file.search.PathFinder;
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 import java.io.File;
 
@@ -58,5 +59,15 @@ public class XmlFileToObjectConverterTest
 		assertNotNull(actual);
 		expected = club;
 		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link XmlFileToObjectConverter}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(XmlFileToObjectConverter.class);
 	}
 }
