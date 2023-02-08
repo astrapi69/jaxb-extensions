@@ -24,36 +24,31 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.jaxb.factory.UnmarshallerFactory;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
-import jakarta.xml.bind.Unmarshaller;
-import lombok.NonNull;
+import io.github.astrapi69.jaxb.schema.XsdSchemaOutputResolver;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 
-import java.io.StringReader;
+import java.io.IOException;
 
 /**
- * The class {@link XmlToObjectExtensions} provides methods for convert xml string objects to java
- * objects
+ * The class {@link ClassToXsdExtensions} provides methods for convert java class objects to xsd
+ * string objects
  */
-public class XmlToObjectExtensions
+public class ClassToXsdExtensions
 {
 
 	/**
-	 * Creates from the given xml string a java object.
+	 * Converts the given java class objects to xsd string
 	 *
-	 * @param <T>
-	 *            the generic type of the return type
-	 * @param xmlString
-	 *            the xml as string object
-	 * @return the xml string
+	 * @param classesToBeBound
+	 *            the java class objects
+	 * @return the xsd string
 	 */
-	@SuppressWarnings("unchecked")
-	public static <T> T toObject(final @NonNull String xmlString, final @NonNull Class<T> clazz)
+	public static String classToXsd(Class<?>... classesToBeBound) throws JAXBException, IOException
 	{
-		Unmarshaller unmarshaller = RuntimeExceptionDecorator
-			.decorate(() -> UnmarshallerFactory.newUnmarshaller(clazz));
-		return (T)RuntimeExceptionDecorator
-			.decorate(() -> unmarshaller.unmarshal(new StringReader(xmlString)));
+		JAXBContext jaxbContext = JAXBContext.newInstance(classesToBeBound);
+		XsdSchemaOutputResolver schemaOutputResolver = new XsdSchemaOutputResolver();
+		jaxbContext.generateSchema(schemaOutputResolver);
+		return schemaOutputResolver.getResult();
 	}
-
 }

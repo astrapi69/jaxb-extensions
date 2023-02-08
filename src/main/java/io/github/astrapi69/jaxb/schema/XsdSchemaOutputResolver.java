@@ -22,38 +22,38 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.schema;
 
-import io.github.astrapi69.jaxb.factory.UnmarshallerFactory;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
-import jakarta.xml.bind.Unmarshaller;
+import io.github.astrapi69.io.StringOutputStream;
+import jakarta.xml.bind.SchemaOutputResolver;
+import lombok.AccessLevel;
 import lombok.NonNull;
+import lombok.experimental.FieldDefaults;
 
-import java.io.StringReader;
+import javax.xml.transform.Result;
+import javax.xml.transform.stream.StreamResult;
+import java.io.IOException;
 
-/**
- * The class {@link XmlToObjectExtensions} provides methods for convert xml string objects to java
- * objects
- */
-public class XmlToObjectExtensions
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class XsdSchemaOutputResolver extends SchemaOutputResolver
 {
 
-	/**
-	 * Creates from the given xml string a java object.
-	 *
-	 * @param <T>
-	 *            the generic type of the return type
-	 * @param xmlString
-	 *            the xml as string object
-	 * @return the xml string
-	 */
-	@SuppressWarnings("unchecked")
-	public static <T> T toObject(final @NonNull String xmlString, final @NonNull Class<T> clazz)
+	String result;
+	StringOutputStream outputStream = new StringOutputStream();
+
+	@Override
+	public Result createOutput(String namespaceUri, String suggestedFileName) throws IOException
 	{
-		Unmarshaller unmarshaller = RuntimeExceptionDecorator
-			.decorate(() -> UnmarshallerFactory.newUnmarshaller(clazz));
-		return (T)RuntimeExceptionDecorator
-			.decorate(() -> unmarshaller.unmarshal(new StringReader(xmlString)));
+
+		StreamResult streamResult = new StreamResult(outputStream);
+		streamResult.setSystemId(suggestedFileName);
+		this.result = outputStream.toString();
+		return streamResult;
 	}
 
+	public String getResult()
+	{
+		this.result = outputStream.toString();
+		return this.result;
+	}
 }
