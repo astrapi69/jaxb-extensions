@@ -4,7 +4,6 @@
 Version 1.3-SNAPSHOT
 -------------
 
-
 ADDED:
 
 - new extension class that converts a java class object to an xsd string
