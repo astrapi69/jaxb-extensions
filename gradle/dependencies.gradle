@@ -1,14 +1,14 @@
 dependencies {
     compileOnly("org.projectlombok:lombok:$lombokVersion")
     annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
-    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
     implementation("jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindApiVersion")
     implementation("org.glassfish.jaxb:jaxb-runtime:$jaxbRuntimeVersion")
-    implementation("io.github.astrapi69:throwable:$throwableVersion")
     implementation("io.github.astrapi69:xml-api:$xmlApiVersion")
     implementation("io.github.astrapi69:silly-io:$sillyIoVersion")
+    implementation("io.github.astrapi69:throwable:$throwableVersion")
 
+    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
+    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
     testImplementation("io.github.astrapi69:crypt-api:$cryptApiVersion")
     testImplementation("io.github.astrapi69:crypt-data:$cryptDataVersion")
     testImplementation("io.github.astrapi69:checksum-up:$checksumUpVersion")

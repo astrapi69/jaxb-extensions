@@ -4,7 +4,11 @@
 Version 2-SNAPSHOT
 -------------
 
+CHANGED:
 
+- update of JDK to newer version 17
+- update of gradle to new version 8.4-rc-1
+- update of test dependency file-worker to new minor version 17
 
 Version 1.3
 -------------
