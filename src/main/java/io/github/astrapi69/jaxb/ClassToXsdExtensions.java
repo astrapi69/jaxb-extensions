@@ -43,6 +43,10 @@ public class ClassToXsdExtensions
 	 * @param classesToBeBound
 	 *            the java class objects
 	 * @return the xsd string
+	 * @throws JAXBException
+	 *             if an error occurs by creating a new instance of the {@link JAXBContext}
+	 * @throws IOException
+	 *             if an error occur when the {@link JAXBContext} try to generate the schema
 	 */
 	public static String classToXsd(Class<?>... classesToBeBound) throws JAXBException, IOException
 	{

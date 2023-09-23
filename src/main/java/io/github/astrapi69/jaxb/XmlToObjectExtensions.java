@@ -39,12 +39,14 @@ public class XmlToObjectExtensions
 {
 
 	/**
-	 * Creates from the given xml string a java object.
+	 * Creates from the given xml string a java object
 	 *
 	 * @param <T>
 	 *            the generic type of the return type
 	 * @param xmlString
 	 *            the xml as string object
+	 * @param clazz
+	 *            the class from the object that will be returned
 	 * @return the xml string
 	 */
 	@SuppressWarnings("unchecked")
