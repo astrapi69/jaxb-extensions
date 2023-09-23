@@ -24,70 +24,30 @@
  */
 package io.github.astrapi69.jaxb;
 
-import java.util.List;
-
-import io.github.astrapi69.crypt.data.model.KeyModel;
-import io.github.astrapi69.file.create.FileInfo;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
-/**
- * The bean class {@link MasterPwFileModel} is for holding the sign in data
- */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @XmlRootElement(namespace = "io.github.astrapi69.jaxb")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MasterPwFileModel
+public class FileInfo
 {
-
-	/** The application file info for create the application file object */
-	FileInfo applicationFileInfo;
-	/** The currently selected key file path */
-	String selectedApplicationFilePath;
-
-	/** The key file paths for the combo box */
-	List<String> applicationFilePaths;
-
-	/** The model for the private key */
-	KeyModel privateKeyInfo;
-
-	/** The key file info for create the key file object */
-	FileInfo keyFileInfo;
-
-	/** The currently selected key file path */
-	String selectedKeyFilePath;
-
-	/** The key file paths for the combo box */
-	List<String> keyFilePaths;
-
-	/** The master password char array. */
-	char[] masterPw;
-
-	/** The repeat of the master password char array. */
-	char[] repeatPw;
-
-	/** The minimum length for the password. */
-	int minPasswordLength;
-
-	/** The flag if the master password is displayed in plain text. */
-	boolean showMasterPw;
-
-	/** The flag if the key file will be used in the authentication. */
-	boolean withKeyFile;
-
-	/** The flag if the a new application file will be created. */
-	boolean newApplicationFile;
-
-	/** The flag if the master password will be used in the authentication. */
-	boolean withMasterPw;
+	/** The name of this file */
+	private String name;
+	/** The path of this file */
+	private String path;
+	/** The flag if this file is a directory */
+	private boolean directory;
 
 }

@@ -54,61 +54,100 @@ class ClassToXsdExtensionsTest
 		assertEquals(expected, actual);
 
 		actual = ClassToXsdExtensions.classToXsd(Employee.class);
-		expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
-			+ "<xs:schema version=\"1.0\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n" + "\n"
-			+ "  <xs:complexType name=\"employee\">\n" + "    <xs:sequence>\n"
-			+ "      <xs:element name=\"id\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"person\" type=\"person\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"subOrdinates\" type=\"employee\" nillable=\"true\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n"
-			+ "    </xs:sequence>\n" + "  </xs:complexType>\n" + "\n"
-			+ "  <xs:complexType name=\"person\">\n" + "    <xs:sequence>\n"
-			+ "      <xs:element name=\"about\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"gender\" type=\"gender\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"married\" type=\"xs:boolean\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"name\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"nickname\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "    </xs:sequence>\n" + "  </xs:complexType>\n" + "\n"
-			+ "  <xs:simpleType name=\"gender\">\n" + "    <xs:restriction base=\"xs:string\">\n"
-			+ "      <xs:enumeration value=\"FEMALE\"/>\n"
-			+ "      <xs:enumeration value=\"MALE\"/>\n"
-			+ "      <xs:enumeration value=\"UNDEFINED\"/>\n" + "    </xs:restriction>\n"
-			+ "  </xs:simpleType>\n" + "</xs:schema>\n" + "\n";
+
+		expected = """
+			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+			<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			  <xs:complexType name="employee">
+			    <xs:sequence>
+			      <xs:element name="id" type="xs:string" minOccurs="0"/>
+			      <xs:element name="person" type="person" minOccurs="0"/>
+			      <xs:element name="subOrdinates" type="employee" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+			    </xs:sequence>
+			  </xs:complexType>
+
+			  <xs:complexType name="person">
+			    <xs:sequence>
+			      <xs:element name="about" type="xs:string" minOccurs="0"/>
+			      <xs:element name="gender" type="gender" minOccurs="0"/>
+			      <xs:element name="married" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="name" type="xs:string" minOccurs="0"/>
+			      <xs:element name="nickname" type="xs:string" minOccurs="0"/>
+			    </xs:sequence>
+			  </xs:complexType>
+
+			  <xs:simpleType name="gender">
+			    <xs:restriction base="xs:string">
+			      <xs:enumeration value="FEMALE"/>
+			      <xs:enumeration value="MALE"/>
+			      <xs:enumeration value="UNDEFINED"/>
+			    </xs:restriction>
+			  </xs:simpleType>
+			</xs:schema>
+
+			""";
 		assertEquals(expected, actual);
 
 		actual = ClassToXsdExtensions.classToXsd(Person.class, Company.class);
-		expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
-			+ "<xs:schema version=\"1.0\" targetNamespace=\"io.github.astrapi69.jaxb\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n"
-			+ "\n" + "  <xs:import schemaLocation=\"schema2.xsd\"/>\n" + "\n"
-			+ "  <xs:element name=\"company\" type=\"company\"/>\n" + "\n" + "</xs:schema>\n" + "\n"
-			+ "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
-			+ "<xs:schema version=\"1.0\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n" + "\n"
-			+ "  <xs:element name=\"employee\" type=\"employee\"/>\n" + "\n"
-			+ "  <xs:complexType name=\"person\">\n" + "    <xs:sequence>\n"
-			+ "      <xs:element name=\"about\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"gender\" type=\"gender\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"married\" type=\"xs:boolean\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"name\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"nickname\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "    </xs:sequence>\n" + "  </xs:complexType>\n" + "\n"
-			+ "  <xs:complexType name=\"company\">\n" + "    <xs:sequence>\n"
-			+ "      <xs:element name=\"employeeList\" minOccurs=\"0\">\n"
-			+ "        <xs:complexType>\n" + "          <xs:sequence>\n"
-			+ "            <xs:element ref=\"employee\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n"
-			+ "          </xs:sequence>\n" + "        </xs:complexType>\n" + "      </xs:element>\n"
-			+ "      <xs:element name=\"location\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"name\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "    </xs:sequence>\n" + "  </xs:complexType>\n" + "\n"
-			+ "  <xs:complexType name=\"employee\">\n" + "    <xs:sequence>\n"
-			+ "      <xs:element name=\"id\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"gender\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"name\" type=\"xs:string\" minOccurs=\"0\"/>\n"
-			+ "      <xs:element name=\"married\" type=\"xs:boolean\" minOccurs=\"0\"/>\n"
-			+ "    </xs:sequence>\n" + "  </xs:complexType>\n" + "\n"
-			+ "  <xs:simpleType name=\"gender\">\n" + "    <xs:restriction base=\"xs:string\">\n"
-			+ "      <xs:enumeration value=\"FEMALE\"/>\n"
-			+ "      <xs:enumeration value=\"MALE\"/>\n"
-			+ "      <xs:enumeration value=\"UNDEFINED\"/>\n" + "    </xs:restriction>\n"
-			+ "  </xs:simpleType>\n" + "</xs:schema>\n" + "\n";
+		expected = """
+			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+			<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			  <xs:element name="employee" type="employee"/>
+
+			  <xs:complexType name="person">
+			    <xs:sequence>
+			      <xs:element name="about" type="xs:string" minOccurs="0"/>
+			      <xs:element name="gender" type="gender" minOccurs="0"/>
+			      <xs:element name="married" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="name" type="xs:string" minOccurs="0"/>
+			      <xs:element name="nickname" type="xs:string" minOccurs="0"/>
+			    </xs:sequence>
+			  </xs:complexType>
+
+			  <xs:complexType name="company">
+			    <xs:sequence>
+			      <xs:element name="employeeList" minOccurs="0">
+			        <xs:complexType>
+			          <xs:sequence>
+			            <xs:element ref="employee" minOccurs="0" maxOccurs="unbounded"/>
+			          </xs:sequence>
+			        </xs:complexType>
+			      </xs:element>
+			      <xs:element name="location" type="xs:string" minOccurs="0"/>
+			      <xs:element name="name" type="xs:string" minOccurs="0"/>
+			    </xs:sequence>
+			  </xs:complexType>
+
+			  <xs:complexType name="employee">
+			    <xs:sequence>
+			      <xs:element name="id" type="xs:string" minOccurs="0"/>
+			      <xs:element name="gender" type="xs:string" minOccurs="0"/>
+			      <xs:element name="name" type="xs:string" minOccurs="0"/>
+			      <xs:element name="married" type="xs:boolean" minOccurs="0"/>
+			    </xs:sequence>
+			  </xs:complexType>
+
+			  <xs:simpleType name="gender">
+			    <xs:restriction base="xs:string">
+			      <xs:enumeration value="FEMALE"/>
+			      <xs:enumeration value="MALE"/>
+			      <xs:enumeration value="UNDEFINED"/>
+			    </xs:restriction>
+			  </xs:simpleType>
+			</xs:schema>
+
+			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+			<xs:schema version="1.0" targetNamespace="io.github.astrapi69.jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			  <xs:import schemaLocation="schema2.xsd"/>
+
+			  <xs:element name="company" type="company"/>
+
+			</xs:schema>
+
+			""";
 		assertEquals(expected, actual);
 	}
 }

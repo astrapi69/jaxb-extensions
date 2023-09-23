@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import io.github.astrapi69.file.create.FileInfo;
 import io.github.astrapi69.file.search.PathFinder;
 
 public class TestDataFactory
@@ -40,11 +41,14 @@ public class TestDataFactory
 	{
 
 		File applicationFile;
+		FileInfo applicationFileInfo;
 
-		applicationFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+
+		applicationFile = new File(PathFinder.getSrcTestResourcesDir(), "master-pw-jaxb.xml");
+		applicationFileInfo = FileInfo.toFileInfo(applicationFile);
 
 		// @formatter:on
-		return MasterPwFileModel.builder().applicationFile(applicationFile).build();
+		return MasterPwFileModel.builder().applicationFileInfo(applicationFileInfo).build();
 		// @formatter:off
     }
 
@@ -96,5 +100,9 @@ public class TestDataFactory
         company.setLocation("Greece/Katerini");
         company.setName("StarPiece");
         return company;
+    }
+
+    public static newFileInfo() {
+        FileInfo.builder().
     }
 }
