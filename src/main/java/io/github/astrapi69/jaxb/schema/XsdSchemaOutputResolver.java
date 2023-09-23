@@ -34,23 +34,41 @@ import jakarta.xml.bind.SchemaOutputResolver;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
+/**
+ * The class {@link XsdSchemaOutputResolver} extends {@link SchemaOutputResolver} and overwrites the
+ * method {@link SchemaOutputResolver#createOutput(String, String)}
+ */
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class XsdSchemaOutputResolver extends SchemaOutputResolver
 {
 
+	/**
+	 * The result
+	 */
 	String result;
+
+	/**
+	 * The {@link StringOutputStream} object
+	 */
 	StringOutputStream outputStream = new StringOutputStream();
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Result createOutput(String namespaceUri, String suggestedFileName) throws IOException
 	{
-
 		StreamResult streamResult = new StreamResult(outputStream);
 		streamResult.setSystemId(suggestedFileName);
 		this.result = outputStream.toString();
 		return streamResult;
 	}
 
+	/**
+	 * Gets the result from the {@link StringOutputStream} object and returns it as string
+	 * 
+	 * @return the generated result
+	 */
 	public String getResult()
 	{
 		this.result = outputStream.toString();
