@@ -24,16 +24,17 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.file.read.ReadFileExtensions;
-import io.github.astrapi69.file.search.PathFinder;
-import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.io.File;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import java.io.File;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.github.astrapi69.file.read.ReadFileExtensions;
+import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
  * The unit test class for the class {@link ObjectToXmlConverter}
@@ -68,8 +69,7 @@ class ObjectToXmlConverterTest
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 		actual = converter.toXml(club);
 		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
-		expected = RuntimeExceptionDecorator
-			.decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
+		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
 		assertEquals(expected, actual);
@@ -92,8 +92,7 @@ class ObjectToXmlConverterTest
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 		actual = converter.toXml(entryModel);
 		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "entry-jaxb.xml");
-		expected = RuntimeExceptionDecorator
-			.decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
+		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
 		assertEquals(expected, actual);
@@ -132,8 +131,7 @@ class ObjectToXmlConverterTest
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 		actual = converter.toXml(company);
 		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "company-jaxb.xml");
-		expected = RuntimeExceptionDecorator
-			.decorate(() -> ReadFileExtensions.readFromFile(xmlFile));
+		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
 		assertEquals(expected, actual);

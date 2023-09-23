@@ -24,15 +24,15 @@
  */
 package io.github.astrapi69.jaxb.schema;
 
-import io.github.astrapi69.io.StringOutputStream;
-import jakarta.xml.bind.SchemaOutputResolver;
-import lombok.AccessLevel;
-import lombok.NonNull;
-import lombok.experimental.FieldDefaults;
+import java.io.IOException;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
-import java.io.IOException;
+
+import io.github.astrapi69.io.StringOutputStream;
+import jakarta.xml.bind.SchemaOutputResolver;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class XsdSchemaOutputResolver extends SchemaOutputResolver

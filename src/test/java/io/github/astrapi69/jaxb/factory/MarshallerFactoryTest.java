@@ -24,21 +24,22 @@
  */
 package io.github.astrapi69.jaxb.factory;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
 import io.github.astrapi69.jaxb.Club;
 import io.github.astrapi69.jaxb.Employee;
 import io.github.astrapi69.jaxb.TestDataFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * The unit test class for the class {@link MarshallerFactory}

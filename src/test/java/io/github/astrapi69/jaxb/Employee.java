@@ -24,10 +24,10 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.util.Objects;
+
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
-
-import java.util.Objects;
 
 @XmlRootElement(name = "employee")
 @XmlType(propOrder = { "id", "gender", "name", "married" })

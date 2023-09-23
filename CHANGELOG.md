@@ -11,16 +11,20 @@ ADDED:
 
 CHANGED:
 
-- update of gradle to new version 7.6
-- update of lombok to new version 1.18.26
-- update of gradle plugin dependency com.github.ben-manes.versions.gradle.plugin to new minor version 0.45.0
-- update of gradle-plugin dependency of 'io.freefair.gradle:lombok-plugin' in version 6.6.1
-- update of gradle-plugin dependency of 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.14.1
-- update of dependency jaxb-runtime to new version 4.0.2
+- update of gradle to new version 8.3
+- update of lombok to new version 1.18.30
+- update of gradle-plugin dependency of 'io.freefair.gradle:lombok-plugin' in version 8.3
+- update of gradle plugin dependency com.github.ben-manes.versions.gradle.plugin to new minor version 0.48.0
+- update of gradle-plugin dependency 'org.ajoberstar.grgit:grgit-gradle' to new version 5.2.0
+- update of gradle-plugin dependency of 'com.diffplug.spotless:spotless-plugin-gradle' in version 6.21.0
+- update of dependency jakarta.xml.bind-api to new version 4.0.1
+- update of dependency jaxb-runtime to new version 4.0.3
 - update of dependency silly-io to new minor version 2.2
+- update of test dependency crypt-api to new minor version 8.6
+- update of test dependency crypt-data to new minor version 8.5
 - update of test dependency 'com.github.meanbeanlib:meanbean' to new version 3.0.0-M9
 - update of test dependency file-worker to new minor version 11.6
-- update of test dependency junit-jupiter-api to new minor version 5.9.2
+- update of test dependency junit-jupiter-api to new minor version 5.10.0
 
 Version 1.2
 -------------

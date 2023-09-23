@@ -24,9 +24,9 @@
  */
 package io.github.astrapi69.jaxb;
 
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-
 import java.time.LocalDate;
+
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class LocalDateAdapter extends XmlAdapter<String, LocalDate>
 {

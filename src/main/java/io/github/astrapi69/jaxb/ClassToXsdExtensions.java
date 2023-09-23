@@ -24,11 +24,11 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.io.IOException;
+
 import io.github.astrapi69.jaxb.schema.XsdSchemaOutputResolver;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-
-import java.io.IOException;
 
 /**
  * The class {@link ClassToXsdExtensions} provides methods for convert java class objects to xsd

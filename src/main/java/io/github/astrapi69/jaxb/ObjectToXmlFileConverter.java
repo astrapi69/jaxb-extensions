@@ -24,10 +24,10 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.io.File;
+
 import io.github.astrapi69.xml.api.ObjectToXmlFile;
 import lombok.NonNull;
-
-import java.io.File;
 
 /**
  * The class {@link ObjectToXmlFileConverter} provides a single method for convert an object to a

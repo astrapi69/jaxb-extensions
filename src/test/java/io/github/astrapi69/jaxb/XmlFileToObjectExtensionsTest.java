@@ -24,14 +24,15 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.file.search.PathFinder;
-import org.junit.jupiter.api.Test;
-import org.meanbean.test.BeanTester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.File;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
+
+import io.github.astrapi69.file.search.PathFinder;
 
 /**
  * The unit test class for the class {@link XmlFileToObjectExtensions}

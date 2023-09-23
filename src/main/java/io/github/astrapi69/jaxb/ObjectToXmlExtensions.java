@@ -24,13 +24,13 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.io.File;
+
 import io.github.astrapi69.io.StringOutputStream;
 import io.github.astrapi69.jaxb.factory.MarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 import jakarta.xml.bind.Marshaller;
 import lombok.NonNull;
-
-import java.io.File;
 
 /**
  * The class {@link ObjectToXmlExtensions} provides methods for convert java objects to xml string

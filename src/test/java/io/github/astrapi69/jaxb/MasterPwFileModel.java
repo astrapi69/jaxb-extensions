@@ -24,6 +24,10 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.io.File;
+import java.security.PrivateKey;
+import java.util.List;
+
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -32,10 +36,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
-
-import java.io.File;
-import java.security.PrivateKey;
-import java.util.List;
 
 /**
  * The bean class {@link MasterPwFileModel} is for holding the sign in data

@@ -24,14 +24,15 @@
  */
 package io.github.astrapi69.jaxb;
 
-import io.github.astrapi69.test.object.Employee;
-import io.github.astrapi69.test.object.Person;
-import jakarta.xml.bind.JAXBException;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import io.github.astrapi69.test.object.Employee;
+import io.github.astrapi69.test.object.Person;
+import jakarta.xml.bind.JAXBException;
 
 /**
  * The unit test class for the class {@link ClassToXsdExtensions}

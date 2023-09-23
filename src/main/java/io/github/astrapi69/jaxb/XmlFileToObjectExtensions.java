@@ -24,12 +24,12 @@
  */
 package io.github.astrapi69.jaxb;
 
+import java.io.File;
+
 import io.github.astrapi69.jaxb.factory.UnmarshallerFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 import jakarta.xml.bind.Unmarshaller;
 import lombok.NonNull;
-
-import java.io.File;
 
 /**
  * The class {@link XmlFileToObjectExtensions} provides methods for convert xml File to java objects
@@ -48,11 +48,13 @@ public class XmlFileToObjectExtensions
 	 *            the class from the class type of the object that will be returned
 	 * @return the object
 	 */
+	@SuppressWarnings("unchecked")
 	public static <T> T toObject(final @NonNull File xmlFile, final @NonNull Class<T> clazz)
 	{
 		Unmarshaller unmarshaller = RuntimeExceptionDecorator
 			.decorate(() -> UnmarshallerFactory.newUnmarshaller(clazz));
-		return (T)RuntimeExceptionDecorator.decorate(() -> unmarshaller.unmarshal(xmlFile));
+		T object = (T)RuntimeExceptionDecorator.decorate(() -> unmarshaller.unmarshal(xmlFile));
+		return object;
 	}
 
 }
