@@ -37,13 +37,7 @@ public class ObjectToXmlFileConverter implements ObjectToXmlFile
 {
 
 	/**
-	 * Converts the given object to a xml string
-	 *
-	 * @param <T>
-	 *            the generic type of the return type
-	 * @param object
-	 *            the object to convert to xml
-	 * @return the xml string from the given object
+	 * {@inheritDoc}
 	 */
 	@Override
 	public <T> void toXml(final @NonNull T object, final @NonNull File file)
