@@ -33,6 +33,8 @@ import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
 
 /**
  * The unit test class for the class {@link XmlFileToObjectConverter}
@@ -54,7 +56,7 @@ public class XmlFileToObjectConverterTest
 
 		club = TestDataFactory.newClub();
 
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/club-jaxb.xml");
 		XmlFileToObjectConverter converter = new XmlFileToObjectConverter();
 		actual = converter.toObject(xmlFile, Club.class);
 		assertNotNull(actual);

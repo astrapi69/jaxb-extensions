@@ -22,26 +22,21 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.model.adapter;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementWrapper;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import lombok.Data;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
-@Data
-@XmlRootElement(namespace = "io.github.astrapi69.jaxb")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Club
+public class LocalDateTimeAdapter extends XmlAdapter<String, LocalDateTime>
 {
-	@XmlElementWrapper(name = "personList")
-	@XmlElement(name = "person")
-	List<Person> personsList;
-	private String name;
-	private String location;
+	public LocalDateTime unmarshal(String localDateTimeAsString) throws Exception
+	{
+		return LocalDateTime.parse(localDateTimeAsString);
+	}
 
+	public String marshal(LocalDateTime localDateTime) throws Exception
+	{
+		return localDateTime.toString();
+	}
 }

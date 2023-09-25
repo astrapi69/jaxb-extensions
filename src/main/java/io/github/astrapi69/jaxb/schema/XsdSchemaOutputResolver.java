@@ -30,13 +30,15 @@ import javax.xml.transform.Result;
 import javax.xml.transform.stream.StreamResult;
 
 import io.github.astrapi69.io.StringOutputStream;
+import io.github.astrapi69.jaxb.ClassToXsdExtensions;
 import jakarta.xml.bind.SchemaOutputResolver;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 
 /**
  * The class {@link XsdSchemaOutputResolver} extends {@link SchemaOutputResolver} and overwrites the
- * method {@link SchemaOutputResolver#createOutput(String, String)}
+ * method {@link SchemaOutputResolver#createOutput(String, String)}. For more information how it is
+ * used see the class {@link ClassToXsdExtensions}
  */
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class XsdSchemaOutputResolver extends SchemaOutputResolver
@@ -50,7 +52,7 @@ public class XsdSchemaOutputResolver extends SchemaOutputResolver
 	/**
 	 * The {@link StringOutputStream} object
 	 */
-	StringOutputStream outputStream = new StringOutputStream();
+	final StringOutputStream outputStream = new StringOutputStream();
 
 	/**
 	 * {@inheritDoc}

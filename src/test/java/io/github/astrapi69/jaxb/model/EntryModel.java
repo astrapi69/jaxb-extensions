@@ -22,11 +22,16 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.model;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+import io.github.astrapi69.jaxb.model.adapter.LocalDateTimeAdapter;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,13 +46,16 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @XmlRootElement(namespace = "io.github.astrapi69.jaxb")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class FileInfo
+public class EntryModel
 {
-	/** The name of this file */
-	private String name;
-	/** The path of this file */
-	private String path;
-	/** The flag if this file is a directory */
-	private boolean directory;
-
+	UUID id;
+	String title;
+	String userName;
+	String password;
+	String url;
+	String notes;
+	boolean expirable;
+	@XmlJavaTypeAdapter(value = LocalDateTimeAdapter.class)
+	LocalDateTime expires;
+	String icon;
 }

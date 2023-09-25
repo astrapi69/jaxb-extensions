@@ -30,6 +30,7 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
+import io.github.astrapi69.jaxb.model.Company;
 import io.github.astrapi69.test.object.Employee;
 import io.github.astrapi69.test.object.Person;
 import jakarta.xml.bind.JAXBException;

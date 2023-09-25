@@ -34,6 +34,10 @@ import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.Company;
+import io.github.astrapi69.jaxb.model.EntryModel;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
@@ -68,7 +72,7 @@ class ObjectToXmlConverterTest
 
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 		actual = converter.toXml(club);
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/club-jaxb.xml");
 		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
@@ -91,7 +95,7 @@ class ObjectToXmlConverterTest
 
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 		actual = converter.toXml(entryModel);
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "entry-jaxb.xml");
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/entry-jaxb.xml");
 		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
@@ -130,7 +134,7 @@ class ObjectToXmlConverterTest
 
 		ObjectToXmlConverter converter = new ObjectToXmlConverter();
 		actual = converter.toXml(company);
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "company-jaxb.xml");
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/company-jaxb.xml");
 		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");

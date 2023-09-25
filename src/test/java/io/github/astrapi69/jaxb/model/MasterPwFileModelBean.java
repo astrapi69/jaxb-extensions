@@ -22,8 +22,10 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.model;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 import io.github.astrapi69.crypt.data.model.KeyModel;
@@ -38,7 +40,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
 /**
- * The bean class {@link MasterPwFileModel} is for holding the sign in data
+ * The bean class {@link MasterPwFileModelBean} is for holding the sign in data
  */
 @Data
 @NoArgsConstructor
@@ -46,10 +48,16 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @XmlRootElement(namespace = "io.github.astrapi69.jaxb")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MasterPwFileModel
+public class MasterPwFileModelBean implements Serializable
 {
+	/** The Constant serialVersionUID. */
+	@Serial
+	private static final long serialVersionUID = 1L;
 
-	/** The application file info for create the application file object */
+	/**
+	 * The encrypted data file for the application. The application file info for create the
+	 * application file object
+	 */
 	FileInfo applicationFileInfo;
 	/** The currently selected key file path */
 	String selectedApplicationFilePath;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:masterPwFileModelBean xmlns:ns2="io.github.astrapi69.jaxb">
+    <applicationFileInfo>
+        <directory>false</directory>
+        <name>application-file-jaxb.xml</name>
+        <path>/home/astrapi69/dev/git/hub/astrapi69/jaxb-extensions/src/test/resources</path>
+    </applicationFileInfo>
+    <masterPw>102</masterPw>
+    <masterPw>111</masterPw>
+    <masterPw>111</masterPw>
+    <minPasswordLength>0</minPasswordLength>
+    <showMasterPw>false</showMasterPw>
+    <withKeyFile>false</withKeyFile>
+    <newApplicationFile>false</newApplicationFile>
+    <withMasterPw>false</withMasterPw>
+</ns2:masterPwFileModelBean>

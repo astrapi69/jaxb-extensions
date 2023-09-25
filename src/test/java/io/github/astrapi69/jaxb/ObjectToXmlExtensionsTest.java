@@ -25,6 +25,7 @@
 package io.github.astrapi69.jaxb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.File;
 
@@ -34,6 +35,9 @@ import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
@@ -46,7 +50,7 @@ public class ObjectToXmlExtensionsTest
 	 * Test method for {@link ObjectToXmlExtensions#toXml(Object)}
 	 */
 	@Test
-	void toXml()
+	void testClubtoXml()
 	{
 		String actual;
 		String expected;
@@ -56,11 +60,37 @@ public class ObjectToXmlExtensionsTest
 		club = TestDataFactory.newClub();
 
 		actual = ObjectToXmlExtensions.toXml(club);
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/club-jaxb.xml");
 		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ObjectToXmlExtensions#toXml(Object)}
+	 */
+	@Test
+	public void testMasterPwFileModelToXml()
+	{
+
+		String actual;
+		String expected;
+		File xmlFile;
+		MasterPwFileModelBean masterPwFileModelBean;
+
+		masterPwFileModelBean = TestDataFactory.newMasterPwFileModelBean();
+		File modelDir = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), "model");
+		xmlFile = new File(modelDir, "master-pw-file-jaxb.xml");
+
+		actual = ObjectToXmlExtensions.toXml(masterPwFileModelBean);
+		assertNotNull(actual);
+
+		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
+		actual = actual.replace("\n", "").replace("\r", "");
+		expected = expected.replace("\n", "").replace("\r", "");
+		assertEquals(expected, actual);
+
 	}
 
 	/**

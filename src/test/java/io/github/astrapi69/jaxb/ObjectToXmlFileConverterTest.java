@@ -36,6 +36,9 @@ import org.meanbean.test.BeanTester;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.Company;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
@@ -103,7 +106,7 @@ class ObjectToXmlFileConverterTest
 		ObjectToXmlFileConverter converter = new ObjectToXmlFileConverter();
 		converter.toXml(club, xmlFile);
 		actual = xmlFile;
-		expected = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+		expected = new File(PathFinder.getSrcTestResourcesDir(), "model/club-jaxb.xml");
 		assertEquals(ReadFileExtensions.fromFile(expected).replace("\n", "").replace("\r", ""),
 			ReadFileExtensions.fromFile(actual).replace("\n", "").replace("\r", ""));
 		RuntimeExceptionDecorator.decorate(() -> DeleteFileExtensions.delete(xmlFile));
@@ -126,7 +129,7 @@ class ObjectToXmlFileConverterTest
 		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "new-company-jaxb.xml");
 		converter.toXml(company, xmlFile);
 		actual = xmlFile;
-		expected = new File(PathFinder.getSrcTestResourcesDir(), "company-jaxb.xml");
+		expected = new File(PathFinder.getSrcTestResourcesDir(), "model/company-jaxb.xml");
 		assertEquals(ReadFileExtensions.fromFile(expected).replace("\n", "").replace("\r", ""),
 			ReadFileExtensions.fromFile(actual).replace("\n", "").replace("\r", ""));
 		RuntimeExceptionDecorator.decorate(() -> DeleteFileExtensions.delete(xmlFile));

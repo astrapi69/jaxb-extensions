@@ -33,6 +33,9 @@ import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
 
 /**
  * The unit test class for the class {@link XmlFileToObjectExtensions}
@@ -53,11 +56,33 @@ public class XmlFileToObjectExtensionsTest
 
 		club = TestDataFactory.newClub();
 
-		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "club-jaxb.xml");
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/club-jaxb.xml");
 
 		actual = XmlFileToObjectExtensions.toObject(xmlFile, Club.class);
 		assertNotNull(actual);
 		expected = club;
+		assertEquals(actual, expected);
+	}
+
+	/**
+	 * Test method for {@link XmlFileToObjectExtensions#toObject(File, Class)}
+	 */
+	@Test
+	void toObjectMasterPwFileModelFromXmlFileAndClass()
+	{
+		MasterPwFileModelBean actual;
+		MasterPwFileModelBean expected;
+		File xmlFile;
+		MasterPwFileModelBean masterPwFileModelBean;
+
+		masterPwFileModelBean = TestDataFactory.newMasterPwFileModelBean();
+
+		File modelDir = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), "model");
+		xmlFile = new File(modelDir, "master-pw-file-jaxb.xml");
+
+		actual = XmlFileToObjectExtensions.toObject(xmlFile, MasterPwFileModelBean.class);
+		assertNotNull(actual);
+		expected = masterPwFileModelBean;
 		assertEquals(actual, expected);
 	}
 

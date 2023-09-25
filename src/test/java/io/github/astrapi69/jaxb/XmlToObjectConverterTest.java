@@ -30,6 +30,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.Company;
+import io.github.astrapi69.jaxb.model.EntryModel;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
+
 /**
  * The unit test class for the class {@link XmlToObjectConverter}
  */

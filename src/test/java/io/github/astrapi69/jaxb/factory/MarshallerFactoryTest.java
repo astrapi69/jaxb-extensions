@@ -34,9 +34,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
-import io.github.astrapi69.jaxb.Club;
-import io.github.astrapi69.jaxb.Employee;
-import io.github.astrapi69.jaxb.TestDataFactory;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.Employee;
+import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;

@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb;
+package io.github.astrapi69.jaxb.model.factory;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -33,22 +33,30 @@ import java.util.UUID;
 
 import io.github.astrapi69.file.create.FileInfo;
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.model.Club;
+import io.github.astrapi69.jaxb.model.Company;
+import io.github.astrapi69.jaxb.model.Employee;
+import io.github.astrapi69.jaxb.model.EntryModel;
+import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
+import io.github.astrapi69.jaxb.model.Person;
 
 public class TestDataFactory
 {
 
-	public static MasterPwFileModel newMasterPwFileModel()
+	public static MasterPwFileModelBean newMasterPwFileModelBean()
 	{
 
 		File applicationFile;
 		FileInfo applicationFileInfo;
 
 
-		applicationFile = new File(PathFinder.getSrcTestResourcesDir(), "master-pw-jaxb.xml");
+		applicationFile = new File(PathFinder.getSrcTestResourcesDir(),
+			"application-file-jaxb.xml");
 		applicationFileInfo = FileInfo.toFileInfo(applicationFile);
 
 		// @formatter:on
-		return MasterPwFileModel.builder().applicationFileInfo(applicationFileInfo).build();
+		return MasterPwFileModelBean.builder().applicationFileInfo(applicationFileInfo)
+			.masterPw("foo".toCharArray()).build();
 		// @formatter:off
     }
 
@@ -102,7 +110,4 @@ public class TestDataFactory
         return company;
     }
 
-//    public static newFileInfo() {
-//        FileInfo.builder().
-//    }
 }
