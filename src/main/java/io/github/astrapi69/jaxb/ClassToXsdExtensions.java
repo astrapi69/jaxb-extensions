@@ -38,7 +38,9 @@ public class ClassToXsdExtensions
 {
 
 	/**
-	 * Converts the given java class objects to xsd string
+	 * Converts the given java class objects to xsd string that can be used in an xsd file. For
+	 * transform them back you java classes you have to use xjc. An example is provided in the
+	 * example repository <a href="https://github.com/astrapi69/jaxb-exjc">jaxb-exjc</a>
 	 *
 	 * @param classesToBeBound
 	 *            the java class objects
