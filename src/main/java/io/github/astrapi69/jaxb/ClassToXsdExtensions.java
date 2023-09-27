@@ -66,6 +66,8 @@ public class ClassToXsdExtensions
 	/**
 	 * Converts the given java class object to a xsd string
 	 *
+	 * @param <T>
+	 *            the generic type of the class type
 	 * @param classToBeBound
 	 *            the java class object
 	 * @return the xsd string
@@ -86,6 +88,8 @@ public class ClassToXsdExtensions
 	/**
 	 * Converts the given java class object into the given xsd file
 	 *
+	 * @param <T>
+	 *            the generic type of the class type
 	 * @param classToBeBound
 	 *            the java class object
 	 * @param xsdOutputFile
