@@ -42,7 +42,7 @@ class ClassToXsdExtensionsTest
 {
 
 	/**
-	 * Test method for {@link ClassToXsdExtensions#classToXsd(Class[])}
+	 * Test method for {@link ClassToXsdExtensions#classesToXsdString(Class[])}
 	 */
 	@Test
 	void classToXsd() throws JAXBException, IOException
@@ -50,11 +50,11 @@ class ClassToXsdExtensionsTest
 		String actual;
 		String expected;
 
-		actual = ClassToXsdExtensions.classToXsd();
+		actual = ClassToXsdExtensions.classesToXsdString();
 		expected = "";
 		assertEquals(expected, actual);
 
-		actual = ClassToXsdExtensions.classToXsd(Employee.class);
+		actual = ClassToXsdExtensions.classesToXsdString(Employee.class);
 
 		expected = """
 			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -90,7 +90,7 @@ class ClassToXsdExtensionsTest
 			""";
 		assertEquals(expected, actual);
 
-		actual = ClassToXsdExtensions.classToXsd(Person.class, Company.class);
+		actual = ClassToXsdExtensions.classesToXsdString(Person.class, Company.class);
 		expected = """
 			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 			<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">

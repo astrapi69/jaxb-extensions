@@ -4,7 +4,14 @@
 Version 2.1-SNAPSHOT
 -------------
 
+ADDED:
 
+- new methods in class ClassToXsdExtensions that can save the xsd to a given file
+
+CHANGED:
+
+- update of gradle to new version 8.4-rc-2
+- moved test dependency file-worker to project dependency
 
 Version 2
 -------------
