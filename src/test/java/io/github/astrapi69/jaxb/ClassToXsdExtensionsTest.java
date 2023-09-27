@@ -32,6 +32,7 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.meanbean.test.BeanTester;
 
 import io.github.astrapi69.file.create.FileFactory;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
@@ -49,12 +50,20 @@ import jakarta.xml.bind.JAXBException;
 class ClassToXsdExtensionsTest
 {
 
+	/**
+	 * Test method for {@link ClassToXsdExtensions}
+	 */
+	@Test
+	public void testWithBeanTester()
+	{
+		final BeanTester beanTester = new BeanTester();
+		beanTester.testBean(ClassToXsdExtensions.class);
+	}
 
 	/**
 	 * Test method for {@link ClassToXsdExtensions#classesToXsdFile(File, Class[])}
 	 */
 	@Test
-	@Disabled
 	void classesToXsdFile() throws JAXBException, IOException
 	{
 		String actual;
@@ -63,7 +72,56 @@ class ClassToXsdExtensionsTest
 		File generatedDir;
 
 		generatedDir = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), "generated");
-		xsdFile = FileFactory.newFile(generatedDir, "Employee.xsd");
+		xsdFile = FileFactory.newFile(generatedDir, "Person.xsd");
+
+		ClassToXsdExtensions.classesToXsdFile(xsdFile, Person.class);
+		boolean exists = FileSearchExtensions.containsFile(generatedDir, xsdFile);
+		assertTrue(exists);
+		actual = ReadFileExtensions.fromFile(xsdFile);
+		// cleanup
+		DeleteFileExtensions.delete(xsdFile);
+
+		expected = """
+			<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+			<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+			  <xs:complexType name="person">
+			    <xs:sequence>
+			      <xs:element name="about" type="xs:string" minOccurs="0"/>
+			      <xs:element name="gender" type="gender" minOccurs="0"/>
+			      <xs:element name="married" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="name" type="xs:string" minOccurs="0"/>
+			      <xs:element name="nickname" type="xs:string" minOccurs="0"/>
+			    </xs:sequence>
+			  </xs:complexType>
+
+			  <xs:simpleType name="gender">
+			    <xs:restriction base="xs:string">
+			      <xs:enumeration value="FEMALE"/>
+			      <xs:enumeration value="MALE"/>
+			      <xs:enumeration value="UNDEFINED"/>
+			    </xs:restriction>
+			  </xs:simpleType>
+			</xs:schema>
+
+			""";
+		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ClassToXsdExtensions#classesToXsdFile(File, Class[])}
+	 */
+	@Test
+	@Disabled
+	void classesToXsdFileWithMoreClasses() throws JAXBException, IOException
+	{
+		String actual;
+		String expected;
+		File xsdFile;
+		File generatedDir;
+
+		generatedDir = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), "generated");
+		xsdFile = FileFactory.newFile(generatedDir, "PersonAndCompany.xsd");
 
 		ClassToXsdExtensions.classesToXsdFile(xsdFile, Person.class, Company.class);
 		boolean exists = FileSearchExtensions.containsFile(generatedDir, xsdFile);
@@ -129,7 +187,7 @@ class ClassToXsdExtensionsTest
 
 			</xs:schema>
 
-									""";
+			""";
 		assertEquals(expected, actual);
 	}
 
@@ -259,7 +317,7 @@ class ClassToXsdExtensionsTest
 			  </xs:simpleType>
 			</xs:schema>
 
-						""";
+			""";
 		assertEquals(expected, actual);
 	}
 
@@ -267,7 +325,6 @@ class ClassToXsdExtensionsTest
 	 * Test method for {@link ClassToXsdExtensions#classesToXsdString(Class[])}
 	 */
 	@Test
-	@Disabled
 	void classesToXsdString() throws JAXBException, IOException
 	{
 		String actual;
@@ -312,6 +369,17 @@ class ClassToXsdExtensionsTest
 
 			""";
 		assertEquals(expected, actual);
+	}
+
+	/**
+	 * Test method for {@link ClassToXsdExtensions#classesToXsdString(Class[])}
+	 */
+	@Test
+	@Disabled
+	void classesToXsdStringWithMoreClasses() throws JAXBException, IOException
+	{
+		String actual;
+		String expected;
 
 		actual = ClassToXsdExtensions.classesToXsdString(Person.class, Company.class);
 		expected = """
