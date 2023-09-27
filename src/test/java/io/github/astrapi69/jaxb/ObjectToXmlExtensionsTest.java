@@ -89,6 +89,8 @@ public class ObjectToXmlExtensionsTest
 		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
 		actual = actual.replace("\n", "").replace("\r", "");
 		expected = expected.replace("\n", "").replace("\r", "");
+		System.err.println("actual:" + actual);
+		System.err.println("expected:" + expected);
 		assertEquals(expected, actual);
 
 	}
