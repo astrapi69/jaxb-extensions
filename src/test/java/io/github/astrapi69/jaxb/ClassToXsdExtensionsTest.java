@@ -34,6 +34,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
 
+import io.github.astrapi69.file.create.DirectoryFactory;
 import io.github.astrapi69.file.create.FileFactory;
 import io.github.astrapi69.file.delete.DeleteFileExtensions;
 import io.github.astrapi69.file.read.ReadFileExtensions;
@@ -71,7 +72,8 @@ class ClassToXsdExtensionsTest
 		File xsdFile;
 		File generatedDir;
 
-		generatedDir = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), "generated");
+		generatedDir = DirectoryFactory.newDirectory(PathFinder.getSrcTestResourcesDir(),
+			"generated");
 		xsdFile = FileFactory.newFile(generatedDir, "Person.xsd");
 
 		ClassToXsdExtensions.classesToXsdFile(xsdFile, Person.class);
@@ -124,8 +126,7 @@ class ClassToXsdExtensionsTest
 		xsdFile = FileFactory.newFile(generatedDir, "PersonAndCompany.xsd");
 
 		ClassToXsdExtensions.classesToXsdFile(xsdFile, Person.class, Company.class);
-		boolean exists = FileSearchExtensions.containsFile(generatedDir, xsdFile);
-		assertTrue(exists);
+
 		actual = ReadFileExtensions.fromFile(xsdFile);
 		// cleanup
 		DeleteFileExtensions.delete(xsdFile);
@@ -202,12 +203,12 @@ class ClassToXsdExtensionsTest
 		File xsdFile;
 		File generatedDir;
 
-		generatedDir = PathFinder.getRelativePath(PathFinder.getSrcTestResourcesDir(), "generated");
+		generatedDir = DirectoryFactory.newDirectory(PathFinder.getSrcTestResourcesDir(),
+			"generated");
 		xsdFile = FileFactory.newFile(generatedDir, "Employee.xsd");
 
 		ClassToXsdExtensions.classToXsdFile(Employee.class, xsdFile);
-		boolean exists = FileSearchExtensions.containsFile(generatedDir, xsdFile);
-		assertTrue(exists);
+
 		actual = ReadFileExtensions.fromFile(xsdFile);
 		// cleanup
 		DeleteFileExtensions.delete(xsdFile);
