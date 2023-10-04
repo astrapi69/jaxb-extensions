@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:menuInfo xmlns:ns2="io.github.astrapi69.jaxb.menu">
+    <name>global.menu.file.exit</name>
+    <text>Exit</text>
+    <mnemonic>69</mnemonic>
+    <ordinal>0</ordinal>
+    <keyStrokeInfo>
+        <keyCode>115</keyCode>
+        <modifiers>512</modifiers>
+        <onKeyRelease>false</onKeyRelease>
+        <keystrokeAsString>alt pressed F4</keystrokeAsString>
+    </keyStrokeInfo>
+    <type>CHECK_BOX_MENU_ITEM</type>
+    <anchor>LAST</anchor>
+    <actionCommand>exit-action-command</actionCommand>
+</ns2:menuInfo>

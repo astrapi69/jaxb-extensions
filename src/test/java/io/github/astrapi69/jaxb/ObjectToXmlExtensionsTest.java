@@ -39,6 +39,7 @@ import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.jaxb.model.Club;
 import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
 import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
+import io.github.astrapi69.jaxb.model.menu.MenuInfo;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**
@@ -46,6 +47,29 @@ import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
  */
 public class ObjectToXmlExtensionsTest
 {
+
+	/**
+	 * Test method for {@link ObjectToXmlExtensions#toXml(Object)}
+	 */
+	@Test
+	void testMenuInfoToXml()
+	{
+		String actual;
+		String expected;
+		File xmlFile;
+		MenuInfo menuInfo;
+
+		menuInfo = TestDataFactory.newMenuInfo();
+
+		actual = ObjectToXmlExtensions.toXml(menuInfo);
+
+		System.out.println(actual);
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/menu/menu-info.xml");
+		expected = RuntimeExceptionDecorator.decorate(() -> ReadFileExtensions.fromFile(xmlFile));
+		actual = actual.replace("\n", "").replace("\r", "");
+		expected = expected.replace("\n", "").replace("\r", "");
+		assertEquals(expected, actual);
+	}
 
 	/**
 	 * Test method for {@link ObjectToXmlExtensions#toXml(Object)}

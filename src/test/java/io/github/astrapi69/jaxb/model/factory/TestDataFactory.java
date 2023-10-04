@@ -24,6 +24,8 @@
  */
 package io.github.astrapi69.jaxb.model.factory;
 
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -39,6 +41,10 @@ import io.github.astrapi69.jaxb.model.Employee;
 import io.github.astrapi69.jaxb.model.EntryModel;
 import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
 import io.github.astrapi69.jaxb.model.Person;
+import io.github.astrapi69.jaxb.model.menu.Anchor;
+import io.github.astrapi69.jaxb.model.menu.KeyStrokeInfo;
+import io.github.astrapi69.jaxb.model.menu.MenuInfo;
+import io.github.astrapi69.jaxb.model.menu.MenuType;
 
 public class TestDataFactory
 {
@@ -110,4 +116,14 @@ public class TestDataFactory
         return company;
     }
 
+public static MenuInfo newMenuInfo() {
+        return MenuInfo.builder().mnemonic(69)
+                .type(MenuType.CHECK_BOX_MENU_ITEM)
+                .anchor(Anchor.LAST)
+                .actionCommand("exit-action-command")
+                .keyStrokeInfo(
+                        KeyStrokeInfo.builder().keyCode(KeyEvent.VK_F4).modifiers(InputEvent.ALT_DOWN_MASK)
+                                .keystrokeAsString("alt pressed F4").onKeyRelease(false).build())
+                .text("Exit").text("Exit").name("global.menu.file.exit").build();
+}
 }
