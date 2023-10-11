@@ -10,6 +10,9 @@ dependencies {
 
     testCompileOnly("org.projectlombok:lombok:$lombokVersion")
     testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testImplementation("io.github.astrapi69:menu-action:$menuActionVersion")
+    testImplementation("io.github.astrapi69:generic-mapper:$genericMapperVersion")
+    testImplementation("org.modelmapper:modelmapper:$modelmapperVersion")
     testImplementation("io.github.astrapi69:crypt-api:$cryptApiVersion")
     testImplementation("io.github.astrapi69:crypt-data:$cryptDataVersion")
     testImplementation("io.github.astrapi69:checksum-up:$checksumUpVersion")

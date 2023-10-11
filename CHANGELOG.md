@@ -4,6 +4,9 @@
 Version 2.2-SNAPSHOT
 -------------
 
+ADDED:
+
+- new test dependencies menu-action, generic-mapper and modelmapper for unit testing
 
 
 Version 2.1

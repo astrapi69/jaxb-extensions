@@ -26,12 +26,26 @@ package io.github.astrapi69.jaxb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
+import org.modelmapper.AbstractConverter;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 
+import io.github.astrapi69.file.read.ReadFileExtensions;
+import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.jaxb.model.Company;
 import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
+import io.github.astrapi69.jaxb.model.menu.KeyStrokeModel;
+import io.github.astrapi69.jaxb.model.menu.MenuModel;
+import io.github.astrapi69.model.mapper.ModelMapperExtensions;
+import io.github.astrapi69.model.mapper.factory.ModelMapperFactory;
+import io.github.astrapi69.swing.menu.model.KeyStrokeInfo;
+import io.github.astrapi69.swing.menu.model.MenuInfo;
 
 /**
  * The unit test class for the class {@link XmlToObjectExtensions}
@@ -63,6 +77,35 @@ public class XmlToObjectExtensionsTest
 		expected = "clazz is marked non-null but is null";
 		actual = nullPointerException.getMessage();
 		assertEquals(expected, actual);
+	}
+
+
+	/**
+	 * Test method for {@link XmlToObjectExtensions#toObject(String, Class)}
+	 */
+	@Test
+	public void testJaxbXmlToObject() throws IOException
+	{
+
+		MenuModel actual;
+		MenuModel expected;
+		File xmlFile;
+		MenuModel menuModel;
+
+		expected = TestDataFactory.newMenuInfo();
+
+		xmlFile = new File(PathFinder.getSrcTestResourcesDir(), "model/menu/menu-model.xml");
+		String xmlAsString = ReadFileExtensions.fromFile(xmlFile);
+		actual = XmlToObjectExtensions.toObject(xmlAsString, MenuModel.class);
+		assertEquals(expected, actual);
+
+		ModelMapper modelMapper = ModelMapperFactory.newModelMapper();
+
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+
+		MenuInfo mapped = ModelMapperExtensions.map(modelMapper, actual, MenuInfo.class);
+
+		System.out.println(mapped);
 	}
 
 	/**
