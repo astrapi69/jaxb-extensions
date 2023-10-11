@@ -41,7 +41,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
 
 /**
- * The class {@link KeyStrokeInfo} is intended for store the information of a keystroke and restore
+ * The class {@link KeyStrokeModel} is intended for store the information of a keystroke and restore
  * it back to a {@link KeyStroke} object
  */
 @Getter
@@ -54,7 +54,7 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @XmlRootElement(namespace = "https://github.com/astrapi69/menu-action")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class KeyStrokeInfo
+public class KeyStrokeModel
 {
 	/**
 	 * the {@link Character} object with the value for a keyboard key
@@ -85,28 +85,12 @@ public class KeyStrokeInfo
 	String keystrokeAsString;
 
 	/**
-	 * Factory method that creates a {@link KeyStrokeInfo} object from the given {@link KeyStroke}
-	 * object
-	 *
-	 * @param keyStroke
-	 *            the {@link KeyStroke} object
-	 * @return the new created {@link KeyStrokeInfo} object
-	 */
-	public static KeyStrokeInfo toKeyStrokeInfo(final @NonNull KeyStroke keyStroke)
-	{
-		return KeyStrokeInfo.builder().keyCode(keyStroke.getKeyCode())
-			.keyChar(keyStroke.getKeyChar()).modifiers(keyStroke.getModifiers())
-			.onKeyRelease(keyStroke.isOnKeyRelease()).keystrokeAsString(keyStroke.toString())
-			.build();
-	}
-
-	/**
-	 * Sets all values of this {@link KeyStrokeInfo} object from the given {@link KeyStroke} object
+	 * Sets all values of this {@link KeyStrokeModel} object from the given {@link KeyStroke} object
 	 * 
 	 * @param keyStroke
 	 *            the {@link KeyStroke} object
 	 */
-	public KeyStrokeInfo set(final @NonNull KeyStroke keyStroke)
+	public KeyStrokeModel set(final @NonNull KeyStroke keyStroke)
 	{
 		this.keyCode = keyStroke.getKeyCode();
 		this.keyChar = keyStroke.getKeyChar();
@@ -117,7 +101,8 @@ public class KeyStrokeInfo
 	}
 
 	/**
-	 * Factory method that creates a {@link KeyStroke} object from this {@link KeyStrokeInfo} object
+	 * Factory method that creates a {@link KeyStroke} object from this {@link KeyStrokeModel}
+	 * object
 	 *
 	 * @return the new created {@link KeyStroke} object
 	 */

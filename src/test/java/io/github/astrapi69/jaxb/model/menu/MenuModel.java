@@ -38,8 +38,8 @@ import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 /**
- * The class {@link MenuInfo} is intended for store the information of a menu and on need to restore
- * the menu
+ * The class {@link MenuModel} is intended for store the information of a menu and on need to
+ * restore the menu
  */
 @Getter
 @Setter
@@ -51,7 +51,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @XmlRootElement(namespace = "https://github.com/astrapi69/menu-action")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MenuInfo
+public class MenuModel
 {
 	/**
 	 * The name of this menu component. The name is used as the menu id and as the action command of
@@ -75,9 +75,9 @@ public class MenuInfo
 	int ordinal;
 
 	/**
-	 * The {@link KeyStrokeInfo} of this menu component
+	 * The {@link KeyStrokeModel} of this menu component
 	 */
-	KeyStrokeInfo keyStrokeInfo;
+	KeyStrokeModel keyStrokeModel;
 
 	/**
 	 * The {@link MenuType} describes the type of this menu component

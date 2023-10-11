@@ -48,14 +48,14 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @XmlRootElement(namespace = "https://github.com/astrapi69/menu-action")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class MenuItemInfo
+public class MenuItemModel
 {
 
 	/**
 	 * The menu info of this menu component
 	 */
 	@NonNull
-	MenuInfo menuInfo;
+	MenuModel menuModel;
 
 	/**
 	 * The action command of this menu component

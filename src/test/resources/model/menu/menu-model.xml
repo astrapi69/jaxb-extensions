@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:menuInfo xmlns:ns2="https://github.com/astrapi69/menu-action">
+<ns2:menuModel xmlns:ns2="https://github.com/astrapi69/menu-action">
     <name>global.menu.file.exit</name>
     <text>Exit</text>
     <mnemonic>69</mnemonic>
     <ordinal>0</ordinal>
-    <keyStrokeInfo>
+    <keyStrokeModel>
         <keyCode>115</keyCode>
         <modifiers>512</modifiers>
         <onKeyRelease>false</onKeyRelease>
         <keystrokeAsString>alt pressed F4</keystrokeAsString>
-    </keyStrokeInfo>
+    </keyStrokeModel>
     <type>CHECK_BOX_MENU_ITEM</type>
     <anchor>LAST</anchor>
     <actionCommand>exit-action-command</actionCommand>
-</ns2:menuInfo>
+</ns2:menuModel>
