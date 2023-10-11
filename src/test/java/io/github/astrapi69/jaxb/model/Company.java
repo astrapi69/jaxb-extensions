@@ -31,7 +31,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(namespace = "io.github.astrapi69.jaxb")
+@XmlRootElement(namespace = "https://github.com/astrapi69/jaxb-extensions")
 public class Company
 {
 	@XmlElementWrapper(name = "employeeList")

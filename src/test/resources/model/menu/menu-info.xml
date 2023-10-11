@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:menuInfo xmlns:ns2="io.github.astrapi69.jaxb.menu">
+<ns2:menuInfo xmlns:ns2="https://github.com/astrapi69/menu-action">
     <name>global.menu.file.exit</name>
     <text>Exit</text>
     <mnemonic>69</mnemonic>

@@ -44,7 +44,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@XmlRootElement(namespace = "io.github.astrapi69.jaxb")
+@XmlRootElement(namespace = "https://github.com/astrapi69/jaxb-extensions")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EntryModel
 {

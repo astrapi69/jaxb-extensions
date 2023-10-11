@@ -52,7 +52,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@XmlRootElement(namespace = "io.github.astrapi69.jaxb.menu")
+@XmlRootElement(namespace = "https://github.com/astrapi69/menu-action")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class KeyStrokeInfo
 {
