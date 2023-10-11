@@ -25,10 +25,12 @@
 package io.github.astrapi69.jaxb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.File;
 import java.io.IOException;
 
+import io.github.astrapi69.awt.action.NoAction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
@@ -46,6 +48,7 @@ import io.github.astrapi69.model.mapper.ModelMapperExtensions;
 import io.github.astrapi69.model.mapper.factory.ModelMapperFactory;
 import io.github.astrapi69.swing.menu.model.KeyStrokeInfo;
 import io.github.astrapi69.swing.menu.model.MenuInfo;
+import io.github.astrapi69.swing.menu.model.MenuItemInfo;
 
 /**
  * The unit test class for the class {@link XmlToObjectExtensions}
@@ -90,7 +93,6 @@ public class XmlToObjectExtensionsTest
 		MenuModel actual;
 		MenuModel expected;
 		File xmlFile;
-		MenuModel menuModel;
 
 		expected = TestDataFactory.newMenuInfo();
 
@@ -99,13 +101,11 @@ public class XmlToObjectExtensionsTest
 		actual = XmlToObjectExtensions.toObject(xmlAsString, MenuModel.class);
 		assertEquals(expected, actual);
 
-		ModelMapper modelMapper = ModelMapperFactory.newModelMapper();
-
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		ModelMapper modelMapper = ModelMapperFactory.newModelMapper(MatchingStrategies.LOOSE);
 
 		MenuInfo mapped = ModelMapperExtensions.map(modelMapper, actual, MenuInfo.class);
-
-		System.out.println(mapped);
+		MenuItemInfo menuItemInfo = mapped.toMenuItemInfo(new NoAction());
+		assertNotNull(menuItemInfo);
 	}
 
 	/**
