@@ -6,8 +6,8 @@ Version 2.2-SNAPSHOT
 
 ADDED:
 
-- new test dependencies menu-action, generic-mapper and modelmapper for unit testing
-
+- new test dependency io.github.astrapi69:menu-jaxb-model
+- new test dependencies io.github.astrapi69:menu-action, io.github.astrapi69:generic-mapper and org.modelmapper:modelmapper for unit testing
 
 Version 2.1
 -------------

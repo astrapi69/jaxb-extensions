@@ -35,16 +35,16 @@ import java.util.UUID;
 
 import io.github.astrapi69.file.create.FileInfo;
 import io.github.astrapi69.file.search.PathFinder;
+import io.github.astrapi69.jaxb.menu.model.Anchor;
+import io.github.astrapi69.jaxb.menu.model.KeyStrokeModel;
+import io.github.astrapi69.jaxb.menu.model.MenuModel;
+import io.github.astrapi69.jaxb.menu.model.MenuType;
 import io.github.astrapi69.jaxb.model.Club;
 import io.github.astrapi69.jaxb.model.Company;
 import io.github.astrapi69.jaxb.model.Employee;
 import io.github.astrapi69.jaxb.model.EntryModel;
 import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
 import io.github.astrapi69.jaxb.model.Person;
-import io.github.astrapi69.jaxb.model.menu.model.Anchor;
-import io.github.astrapi69.jaxb.model.menu.model.KeyStrokeModel;
-import io.github.astrapi69.jaxb.model.menu.model.MenuModel;
-import io.github.astrapi69.jaxb.model.menu.model.MenuType;
 
 public class TestDataFactory
 {

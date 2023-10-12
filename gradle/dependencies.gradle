@@ -7,9 +7,9 @@ dependencies {
     implementation("io.github.astrapi69:silly-io:$sillyIoVersion")
     implementation("io.github.astrapi69:throwable:$throwableVersion")
     implementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
-
     testCompileOnly("org.projectlombok:lombok:$lombokVersion")
     testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    testImplementation("io.github.astrapi69:menu-jaxb-model:$menuJaxbModelVersion")
     testImplementation("io.github.astrapi69:awt-extensions:$awtExtensionsVersion")
     testImplementation("io.github.astrapi69:menu-action:$menuActionVersion")
     testImplementation("io.github.astrapi69:generic-mapper:$genericMapperVersion")
