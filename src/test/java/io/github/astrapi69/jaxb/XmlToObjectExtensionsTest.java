@@ -30,23 +30,20 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.io.File;
 import java.io.IOException;
 
-import io.github.astrapi69.awt.action.NoAction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.meanbean.test.BeanTester;
-import org.modelmapper.AbstractConverter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 
+import io.github.astrapi69.awt.action.NoAction;
 import io.github.astrapi69.file.read.ReadFileExtensions;
 import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.jaxb.model.Company;
 import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
-import io.github.astrapi69.jaxb.model.menu.KeyStrokeModel;
-import io.github.astrapi69.jaxb.model.menu.MenuModel;
+import io.github.astrapi69.jaxb.model.menu.model.MenuModel;
 import io.github.astrapi69.model.mapper.ModelMapperExtensions;
 import io.github.astrapi69.model.mapper.factory.ModelMapperFactory;
-import io.github.astrapi69.swing.menu.model.KeyStrokeInfo;
 import io.github.astrapi69.swing.menu.model.MenuInfo;
 import io.github.astrapi69.swing.menu.model.MenuItemInfo;
 

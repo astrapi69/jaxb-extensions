@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="KeyStrokeModel" type="keyStrokeModel"/>
+
+    <xs:element name="MenuModel" type="menuModel"/>
+
+    <xs:complexType name="menuModel">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="text" type="xs:string" minOccurs="0"/>
+            <xs:element name="mnemonic" type="xs:int" minOccurs="0"/>
+            <xs:element name="ordinal" type="xs:int"/>
+            <xs:element name="keyStrokeModel" type="keyStrokeModel" minOccurs="0"/>
+            <xs:element name="type" type="menuType" minOccurs="0"/>
+            <xs:element name="anchor" type="anchor" minOccurs="0"/>
+            <xs:element name="relativeToMenuId" type="xs:string" minOccurs="0"/>
+            <xs:element name="actionCommand" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="keyStrokeModel">
+        <xs:sequence>
+            <xs:element name="keyChar" type="xs:unsignedShort" minOccurs="0"/>
+            <xs:element name="keyCode" type="xs:int" minOccurs="0"/>
+            <xs:element name="modifiers" type="xs:int" minOccurs="0"/>
+            <xs:element name="onKeyRelease" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="keystrokeAsString" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="menuType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SYSTEM_TRAY"/>
+            <xs:enumeration value="MENU_BAR"/>
+            <xs:enumeration value="TOOL_BAR"/>
+            <xs:enumeration value="MENU"/>
+            <xs:enumeration value="MENU_ITEM"/>
+            <xs:enumeration value="CHECK_BOX_MENU_ITEM"/>
+            <xs:enumeration value="RADIO_BUTTON_MENU_ITEM"/>
+            <xs:enumeration value="POPUP"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="anchor">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="BEFORE"/>
+            <xs:enumeration value="AFTER"/>
+            <xs:enumeration value="FIRST"/>
+            <xs:enumeration value="LAST"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+

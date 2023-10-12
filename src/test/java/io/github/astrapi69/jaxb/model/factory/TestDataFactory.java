@@ -41,10 +41,10 @@ import io.github.astrapi69.jaxb.model.Employee;
 import io.github.astrapi69.jaxb.model.EntryModel;
 import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
 import io.github.astrapi69.jaxb.model.Person;
-import io.github.astrapi69.jaxb.model.menu.Anchor;
-import io.github.astrapi69.jaxb.model.menu.KeyStrokeModel;
-import io.github.astrapi69.jaxb.model.menu.MenuModel;
-import io.github.astrapi69.jaxb.model.menu.MenuType;
+import io.github.astrapi69.jaxb.model.menu.model.Anchor;
+import io.github.astrapi69.jaxb.model.menu.model.KeyStrokeModel;
+import io.github.astrapi69.jaxb.model.menu.model.MenuModel;
+import io.github.astrapi69.jaxb.model.menu.model.MenuType;
 
 public class TestDataFactory
 {

@@ -39,7 +39,7 @@ import io.github.astrapi69.file.search.PathFinder;
 import io.github.astrapi69.jaxb.model.Club;
 import io.github.astrapi69.jaxb.model.MasterPwFileModelBean;
 import io.github.astrapi69.jaxb.model.factory.TestDataFactory;
-import io.github.astrapi69.jaxb.model.menu.MenuModel;
+import io.github.astrapi69.jaxb.model.menu.model.MenuModel;
 import io.github.astrapi69.throwable.RuntimeExceptionDecorator;
 
 /**

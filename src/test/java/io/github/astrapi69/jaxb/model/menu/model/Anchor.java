@@ -22,44 +22,35 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb.model.menu;
+package io.github.astrapi69.jaxb.model.menu.model;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.FieldDefaults;
-
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor(force = true)
-@AllArgsConstructor
-@Builder(toBuilder = true)
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-@XmlRootElement(namespace = "https://github.com/astrapi69/menu-action")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class MenuItemModel
+/**
+ * The enum class {@link Anchor} provides the relative position of a source menu component to
+ * another target menu component
+ */
+public enum Anchor
 {
+	/**
+	 * If a source menu component have the position value <code>Anchor#BEFORE</code> it will be
+	 * placed before the anchor target menu component
+	 */
+	BEFORE,
 
 	/**
-	 * The menu info of this menu component
+	 * If a source menu component have the position value <code>Anchor#AFTER</code> it will be
+	 * placed after the anchor target menu component
 	 */
-	@NonNull
-	MenuModel menuModel;
+	AFTER,
 
 	/**
-	 * The action command of this menu component
+	 * If a source menu component have the position value <code>Anchor#FIRST</code> it will be
+	 * placed as the first menu component
 	 */
-	String actionCommand;
+	FIRST,
 
+	/**
+	 * If a source menu component have the position value <code>Anchor#LAST</code> it will be placed
+	 * as the last menu component
+	 */
+	LAST
 }

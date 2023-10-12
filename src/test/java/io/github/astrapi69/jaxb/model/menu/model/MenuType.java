@@ -22,35 +22,51 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb.model.menu;
+package io.github.astrapi69.jaxb.model.menu.model;
 
 /**
- * The enum class {@link Anchor} provides the relative position of a source menu component to
- * another target menu component
+ * The enum class {@link MenuType} provides all the possible types that a menu can have
  */
-public enum Anchor
+public enum MenuType
 {
-	/**
-	 * If a source menu component have the position value <code>Anchor#BEFORE</code> it will be
-	 * placed before the anchor target menu component
-	 */
-	BEFORE,
 
 	/**
-	 * If a source menu component have the position value <code>Anchor#AFTER</code> it will be
-	 * placed after the anchor target menu component
+	 * Represents the system tray type
 	 */
-	AFTER,
+	SYSTEM_TRAY,
 
 	/**
-	 * If a source menu component have the position value <code>Anchor#FIRST</code> it will be
-	 * placed as the first menu component
+	 * Represents the menu bar type
 	 */
-	FIRST,
+	MENU_BAR,
 
 	/**
-	 * If a source menu component have the position value <code>Anchor#LAST</code> it will be placed
-	 * as the last menu component
+	 * Represents the toolbar type
 	 */
-	LAST
+	TOOL_BAR,
+
+	/**
+	 * Represents the default menu type
+	 */
+	MENU,
+
+	/**
+	 * Represents the menu item type
+	 */
+	MENU_ITEM,
+
+	/**
+	 * Represents the checkbox menu item type
+	 */
+	CHECK_BOX_MENU_ITEM,
+
+	/**
+	 * Represents the radio button menu item type
+	 */
+	RADIO_BUTTON_MENU_ITEM,
+
+	/**
+	 * Represents the popup menu type
+	 */
+	POPUP
 }

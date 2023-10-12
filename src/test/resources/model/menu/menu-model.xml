@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:menuModel xmlns:ns2="https://github.com/astrapi69/menu-action">
+<MenuModel>
     <name>global.menu.file.exit</name>
     <text>Exit</text>
     <mnemonic>69</mnemonic>
@@ -13,4 +13,4 @@
     <type>CHECK_BOX_MENU_ITEM</type>
     <anchor>LAST</anchor>
     <actionCommand>exit-action-command</actionCommand>
-</ns2:menuModel>
+</MenuModel>

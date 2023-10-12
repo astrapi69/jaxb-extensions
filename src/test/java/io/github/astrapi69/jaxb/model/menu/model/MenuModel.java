@@ -22,7 +22,7 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapi69.jaxb.model.menu;
+package io.github.astrapi69.jaxb.model.menu.model;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -49,7 +49,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@XmlRootElement(namespace = "https://github.com/astrapi69/menu-action")
+@XmlRootElement(name = "MenuModel")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class MenuModel
 {
