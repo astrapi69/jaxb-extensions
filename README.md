@@ -35,7 +35,7 @@ The source code comes under the liberal MIT License, making jaxb-extensions grea
 
 ## gradle dependency
 
-Replace the variable ${latestVersion} with the current latest version: [![release version](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/jaxb-extensions/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/jaxb-extensions)
+Replace the variable ${latestVersion} with the current latest version: [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/jaxb-extensions/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.astrapi69/jaxb-extensions)
 
 You can first define the version in the ext section and add than the following gradle dependency to
 your project `build.gradle` if you want to import the core functionality of jaxb-extensions:
