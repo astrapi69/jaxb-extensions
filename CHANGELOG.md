@@ -6,6 +6,7 @@ Version 2.2-SNAPSHOT
 
 ADDED:
 
+- new libs.versions.toml file for new automatic catalog versions update
 - new test dependency io.github.astrapi69:menu-jaxb-model
 - new test dependencies io.github.astrapi69:menu-action, io.github.astrapi69:generic-mapper and org.modelmapper:modelmapper for unit testing
 

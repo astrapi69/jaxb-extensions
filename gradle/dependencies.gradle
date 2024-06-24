@@ -1,24 +1,25 @@
 dependencies {
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    implementation("jakarta.xml.bind:jakarta.xml.bind-api:$jakartaXmlBindApiVersion")
-    implementation("org.glassfish.jaxb:jaxb-runtime:$jaxbRuntimeVersion")
-    implementation("io.github.astrapi69:xml-api:$xmlApiVersion")
-    implementation("io.github.astrapi69:silly-io:$sillyIoVersion")
-    implementation("io.github.astrapi69:throwable:$throwableVersion")
-    implementation("io.github.astrapi69:file-worker:$fileWorkerVersion")
-    testCompileOnly("org.projectlombok:lombok:$lombokVersion")
-    testAnnotationProcessor("org.projectlombok:lombok:$lombokVersion")
-    testImplementation("io.github.astrapi69:menu-jaxb-model:$menuJaxbModelVersion")
-    testImplementation("io.github.astrapi69:awt-extensions:$awtExtensionsVersion")
-    testImplementation("io.github.astrapi69:menu-action:$menuActionVersion")
-    testImplementation("io.github.astrapi69:generic-mapper:$genericMapperVersion")
-    testImplementation("org.modelmapper:modelmapper:$modelmapperVersion")
-    testImplementation("io.github.astrapi69:crypt-api:$cryptApiVersion")
-    testImplementation("io.github.astrapi69:crypt-data:$cryptDataVersion")
-    testImplementation("io.github.astrapi69:checksum-up:$checksumUpVersion")
-    testImplementation("io.github.astrapi69:test-object:$testObjectVersion")
-    testImplementation("com.github.meanbeanlib:meanbean:$meanbeanVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    implementation libs.jakarta.xml.bind.api
+    implementation libs.jaxb.runtime
+    implementation libs.xml.api
+    implementation libs.silly.io
+    implementation libs.throwable
+    implementation libs.file.worker
+    testImplementation libs.menu.jaxb.model
+    testImplementation libs.awt.extensions
+    testImplementation libs.menu.action
+    testImplementation libs.generic.mapper
+    testImplementation libs.modelmapper
+    testImplementation libs.crypt.api
+    testImplementation libs.crypt.data
+    testImplementation libs.checksum.up
+    // Note: use of bundles...
+    testImplementation libs.bundles.unit.testing
+    testRuntimeOnly libs.junit.platform.launcher
 }

@@ -1,0 +1,61 @@
+[versions]
+awt-extensions-version = "1.1"
+checksum-up-version = "2.2"
+crypt-api-version = "8.6"
+crypt-data-version = "8.5"
+file-worker-version = "17"
+generic-mapper-version = "4"
+gradle-plugin-grgit-version = "5.2.2"
+gradle-plugin-license-version = "0.16.1"
+gradle-plugin-lombok-version = "8.6"
+gradle-plugin-spotless-version = "7.0.0.BETA1"
+gradle-plugin-version-catalog-update-version = "0.8.4"
+gradle-plugin-versions-version = "0.51.0"
+jakarta-xml-bind-api-version = "4.0.1"
+jaxb-runtime-version = "4.0.3"
+junit-jupiter-version = "5.10.0"
+lombok-version = "1.18.30"
+meanbean-version = "3.0.0-M9"
+menu-action-version = "3.4-SNAPSHOT"
+menu-jaxb-model-version = "1"
+modelmapper-version = "3.1.1"
+silly-io-version = "2.2"
+test-object-version = "7.2"
+throwable-version = "2.3"
+xml-api-version = "1.4"
+
+[libraries]
+awt-extensions = { module = "io.github.astrapi69:awt-extensions", version.ref = "awt-extensions-version" }
+checksum-up = { module = "io.github.astrapi69:checksum-up", version.ref = "checksum-up-version" }
+crypt-api = { module = "io.github.astrapi69:crypt-api", version.ref = "crypt-api-version" }
+crypt-data = { module = "io.github.astrapi69:crypt-data", version.ref = "crypt-data-version" }
+file-worker = { module = "io.github.astrapi69:file-worker", version.ref = "file-worker-version" }
+generic-mapper = { module = "io.github.astrapi69:generic-mapper", version.ref = "generic-mapper-version" }
+jakarta-xml-bind-api = { module = "jakarta.xml.bind:jakarta.xml.bind-api", version.ref = "jakarta-xml-bind-api-version" }
+jaxb-runtime = { module = "org.glassfish.jaxb:jaxb-runtime", version.ref = "jaxb-runtime-version" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter-version" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
+meanbean = { module = "com.github.meanbeanlib:meanbean", version.ref = "meanbean-version" }
+menu-action = { module = "io.github.astrapi69:menu-action", version.ref = "menu-action-version" }
+menu-jaxb-model = { module = "io.github.astrapi69:menu-jaxb-model", version.ref = "menu-jaxb-model-version" }
+modelmapper = { module = "org.modelmapper:modelmapper", version.ref = "modelmapper-version" }
+silly-io = { module = "io.github.astrapi69:silly-io", version.ref = "silly-io-version" }
+test-object = { module = "io.github.astrapi69:test-object", version.ref = "test-object-version" }
+throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable-version" }
+xml-api = { module = "io.github.astrapi69:xml-api", version.ref = "xml-api-version" }
+
+[bundles]
+unit-testing = [
+    "junit-jupiter",
+    "meanbean",
+    "test-object",
+]
+
+[plugins]
+gradle-versions-plugin = { id = "com.github.ben-manes.versions", version.ref = "gradle-plugin-versions-version" }
+grgit-gradle = { id = "org.ajoberstar.grgit", version.ref = "gradle-plugin-grgit-version" }
+license-gradle-plugin = { id = "com.github.hierynomus.license", version.ref = "gradle-plugin-license-version" }
+lombok-plugin = { id = "io.freefair.lombok", version.ref = "gradle-plugin-lombok-version" }
+spotless-plugin-gradle = { id = "com.diffplug.spotless", version.ref = "gradle-plugin-spotless-version" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradle-plugin-version-catalog-update-version" }
