@@ -27,6 +27,7 @@ package io.github.astrapi69.jaxb;
 import java.io.File;
 import java.io.IOException;
 
+import io.github.astrapi69.file.write.StoreFileExtensions;
 import io.github.astrapi69.file.write.WriteFileExtensions;
 import io.github.astrapi69.jaxb.schema.XsdSchemaOutputResolver;
 import jakarta.xml.bind.JAXBContext;
@@ -102,8 +103,7 @@ public class ClassToXsdExtensions
 	public static <T> void classToXsdFile(Class<T> classToBeBound, File xsdOutputFile)
 		throws JAXBException, IOException
 	{
-		WriteFileExtensions.writeStringToFile(xsdOutputFile, classToXsdString(classToBeBound),
-			"UTF-8");
+		StoreFileExtensions.toFile(xsdOutputFile, classToXsdString(classToBeBound), "UTF-8");
 	}
 
 	/**
@@ -121,8 +121,7 @@ public class ClassToXsdExtensions
 	public static void classesToXsdFile(File xsdOutputFile, Class<?>... classesToBeBound)
 		throws JAXBException, IOException
 	{
-		WriteFileExtensions.writeStringToFile(xsdOutputFile, classesToXsdString(classesToBeBound),
-			"UTF-8");
+		StoreFileExtensions.toFile(xsdOutputFile, classesToXsdString(classesToBeBound), "UTF-8");
 	}
 
 }

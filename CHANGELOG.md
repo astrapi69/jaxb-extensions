@@ -10,6 +10,11 @@ ADDED:
 - new test dependency io.github.astrapi69:menu-jaxb-model
 - new test dependencies io.github.astrapi69:menu-action, io.github.astrapi69:generic-mapper and org.modelmapper:modelmapper for unit testing
 
+CHANGED:
+
+- update of gradle to new version 8.8
+
+
 Version 2.1
 -------------
 
